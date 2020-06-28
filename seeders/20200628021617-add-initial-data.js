@@ -38,7 +38,9 @@ module.exports = {
   return await queryInterface.bulkInsert('BeersBreweries', [
       {
       beersId: 1,
-      breweriesId: 1
+      breweriesId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()    
     }
   ])
   },

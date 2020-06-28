@@ -16,7 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     favorite: DataTypes.BOOLEAN
   }, {});
   Breweries.associate = function(models) {
-    Breweries.belongsToMany(models.Beers, { through: 'BeersBreweries' });
+    Breweries.belongsToMany(models.Beers, { 
+      through: 'BeersBreweries',
+      foreignKey: 'breweriesId',
+      otherKey: 'beersId' 
+    });
   };
   return Breweries;
 };
