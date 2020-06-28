@@ -35,10 +35,12 @@ module.exports = {
     }
   ], {});
 
-  return await queryInterface.bulkInsert('BeersBreweries', [{
-    beersId: 1,
-    breweriesId: 1
-  }])
+  return await queryInterface.bulkInsert('BeersBreweries', [
+      {
+      beersId: 1,
+      breweriesId: 2
+    }
+  ])
   },
 
   down: async (queryInterface, Sequelize) => {
