@@ -21,8 +21,11 @@ router.get('/beers', function(req, res, next) {
 });
 
 /* GET breweries page. */
-// router.get('/breweries', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+router.get('/breweries', function(req, res, next) {
+  db.Breweries.findAll()
+    .then(data => {
+      res.json(data)
+    })
+});
 
 module.exports = router;
