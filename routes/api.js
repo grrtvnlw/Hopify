@@ -3,14 +3,14 @@ var router = express.Router();
 const db = require('../models')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 /* GET login page. */
-router.get('/login', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/login', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 /* GET beers page. */
 router.get('/beers', function(req, res, next) {
@@ -21,8 +21,8 @@ router.get('/beers', function(req, res, next) {
 });
 
 /* GET breweries page. */
-router.get('/breweries', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/breweries', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 module.exports = router;
