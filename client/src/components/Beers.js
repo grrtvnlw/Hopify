@@ -31,13 +31,6 @@ componentDidMount() {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
-              <NavDropdown title="Locations" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Atlanta</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Denver</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Bay Area</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
               <NavDropdown title="Types" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">IPA</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Seltzer</NavDropdown.Item>
@@ -56,10 +49,11 @@ componentDidMount() {
           </Navbar.Collapse>
         </Navbar>
         <div className={ styles.beerDiv }>
+          <h1>Search for a city and a style to find beers</h1>
           { this.state.beers.map(beer => {
             return (
               <Card className={ styles.beerCard }>
-                <h1>{ beer.name }</h1>
+                <h2>{ beer.name }</h2>
                 <p>{ beer.description }</p>
                 <ul>
                   <li><b>ABV: </b>{ beer.abv }</li>
