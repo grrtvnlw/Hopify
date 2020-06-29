@@ -26,7 +26,7 @@ componentDidMount() {
           return (
             <div>
               <h1>{ beer.name }</h1>
-              <pre>{ JSON.stringify(beer, null, '\n') }</pre>
+              <p>{ beer.description }</p>
             </div>
           )
         })}
