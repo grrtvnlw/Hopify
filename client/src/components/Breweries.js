@@ -20,6 +20,10 @@ export default class Breweries extends Component {
       .then(res => res.json())
       .then(data => {
         if (data) {
+          data = data.map(brewery => {
+            brewery.display = false;
+            return brewery
+          })
           console.log(data)
           this.setState({
             breweries: data,
