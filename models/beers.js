@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const Beers = sequelize.define('Beers', {
     name: DataTypes.TEXT,
     description: DataTypes.TEXT,
+    link: DataTypes.TEXT,
     abv: DataTypes.TEXT,
     ibu: DataTypes.TEXT,
     style: DataTypes.TEXT,

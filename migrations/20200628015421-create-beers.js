@@ -14,6 +14,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      link: {
+        type: Sequelize.TEXT
+      },
       abv: {
         type: Sequelize.TEXT
       },

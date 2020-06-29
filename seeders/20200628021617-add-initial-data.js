@@ -40,7 +40,8 @@ module.exports = {
     await queryInterface.bulkInsert('Beers', [
       {
       name: 'SweetWater IPA',    
-      description: 'This mammoth IPA is defined by generous quantities of juicy American hops. The extensive dry hopping process contributes to its bright and flavorful character. This beer is unfiltered to leave all the natural flavors intact and bottle conditioned to stay super fresh.',    
+      description: 'This mammoth IPA is defined by generous quantities of juicy American hops. The extensive dry hopping process contributes to its bright and flavorful character. This beer is unfiltered to leave all the natural flavors intact and bottle conditioned to stay super fresh.',
+      link: 'https://www.sweetwaterbrew.com/brews/sweetwater-ipa/',    
       abv: '6.3%',    
       ibu: '50',    
       style: 'IPA',    
@@ -52,6 +53,7 @@ module.exports = {
     {
       name: 'Goin\' Coastal',    
       description: 'Slip into some sunshine and step off the grid by Goin’ Coastal with this pineapple laced IPA. The bright aromas of the five citrus hop additions are accentuated by the tropical fruit of the pineapple. And just like those three day weekends, its finish is quick. Golden copper in color with a full malt bill to bring the balance to our year round offering.',    
+      link: 'https://www.sweetwaterbrew.com/brews/goin-coastal-ipa/',
       abv: '6.1%',    
       ibu: '45',    
       style: 'IPA',    
