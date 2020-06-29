@@ -10,7 +10,7 @@ export default class Beers extends Component {
   }
   
 componentDidMount() {
-  fetch('http://localhost:3001/api/v1/beers')
+  fetch('/api/v1/beers')
   .then(res => res.json())
   .then(data => {
     this.setState({
@@ -25,6 +25,7 @@ componentDidMount() {
         { this.state.beers.map(beer => {
           return (
             <div>
+              <h1>{ beer.name }</h1>
               <pre>{ JSON.stringify(beer, null, '\n') }</pre>
             </div>
           )
