@@ -14,15 +14,47 @@ const db = require('../models')
 
 /* GET beers page. */
 router.get('/beers', function(req, res, next) {
-  db.Beers.findAll()
+  db.Beers.findAll({
+    include: [{
+      model: db.Breweries,
+      // attributes: ['name', 'description', 'website'],
+      through: {
+        attributes: []
+      }
+    }],
+    // attributes: ['name', 'description', 'abv', 'ibu']
+  })
     .then(data => {
       res.json(data)
     })
 });
 
+/* GET beer page. */
+router.get('/beers/:id', (req, res) => {
+  db.Beers.findByPk(req.params.id, {
+    include: [{
+      model: db.Breweries,
+      through: {
+        attributes: []
+      }
+    }]
+  })
+  .then(data => {
+    res.json(data)
+  })
+})
+
 /* GET breweries page. */
 router.get('/breweries', function(req, res, next) {
   db.Breweries.findAll()
+    .then(data => {
+      res.json(data)
+    })
+});
+
+/* GET brewery page. */
+router.get('/breweries/:id', function(req, res, next) {
+  db.Breweries.findByPk(req.params.id)
     .then(data => {
       res.json(data)
     })

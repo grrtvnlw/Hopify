@@ -18,6 +18,22 @@ module.exports = {
       favorite: true,
       createdAt: new Date(),
       updatedAt: new Date()  
+    },
+    {
+      name: 'Lagunitas Brewing Company',
+      description: "From our earliest days of striving to make consistently good beer, and instead making beer that ranged from vile, to barely drinkable, to wonderful, to elegant, to questionable-at-best. From being castigated by our West Marin neighbors to finally suffering an 'eviction' by our West Marin septic system. From landing in the welcoming arms of Petaluma, and actually getting our beer into bottles, onto the streets, and into the hands of sympathatic beer geeks, to steadily losing less money each month. From all this and more, Lagunitas Brewing Company is emerging as a battle-tested brewery capable of making great beer out of goat's milk, brambles, and asphalt on the surface of the Moon, if need be.\r\n\r\nAs the poet once said, 'Where, but for the grace of God and the kindness of strangers, go I'. Where go we indeed, whatever that means.",
+      website: "http://www.lagunitas.com/",
+      established: "1993",
+      images: "https://brewerydb-images.s3.amazonaws.com/brewery/nLsoQ9/upload_WqZkvw-icon.png",
+      streetAddress: "1280 North McDowell Boulevard",
+      locality: "Petaluma",
+      region: "California",
+      postalCode: "94954",
+      phone: "707-769-4495",
+      wishlist: true,
+      favorite: false,
+      createdAt: new Date(),
+      updatedAt: new Date()  
     }
   ])
 
@@ -32,12 +48,29 @@ module.exports = {
       favorite: false,
       createdAt: new Date(),
       updatedAt: new Date()    
+    },
+    {
+      name: 'Goin\' Coastal',    
+      description: 'Slip into some sunshine and step off the grid by Goin’ Coastal with this pineapple laced IPA. The bright aromas of the five citrus hop additions are accentuated by the tropical fruit of the pineapple. And just like those three day weekends, its finish is quick. Golden copper in color with a full malt bill to bring the balance to our year round offering.',    
+      abv: '6.1%',    
+      ibu: '45',    
+      style: 'IPA',    
+      wishlist: false,
+      favorite: true,
+      createdAt: new Date(),
+      updatedAt: new Date() 
     }
   ], {});
 
   return await queryInterface.bulkInsert('BeersBreweries', [
       {
       beersId: 1,
+      breweriesId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()    
+    },
+    {
+      beersId: 2,
       breweriesId: 1,
       createdAt: new Date(),
       updatedAt: new Date()    
