@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
+import styles from './Beers.module.css';
 
 export default class Beers extends Component {
   constructor(props) {
@@ -54,10 +55,10 @@ componentDidMount() {
             </Form>
           </Navbar.Collapse>
         </Navbar>
-        <div>
+        <div className={ styles.beerDiv }>
           { this.state.beers.map(beer => {
             return (
-              <Card>
+              <Card className={ styles.beerCard }>
                 <h1>{ beer.name }</h1>
                 <p>{ beer.description }</p>
                 <ul>

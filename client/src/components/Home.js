@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap'
+import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap'
+import styles from './Home.module.css';
+import pic from '../Hops_IPA_Pour-BA-1200.jpg';
 
 export default class Home extends Component {
   render() {
@@ -28,6 +30,12 @@ export default class Home extends Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
+        <div className={ styles.home }>
+          <header>
+            <h1>Find beers and breweries in your city</h1>
+          </header>
+          <img src={ pic }/>
+        </div>
       </Container>
     )
   }
