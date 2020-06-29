@@ -24,26 +24,25 @@ componentDidMount() {
   render() {
     return (
       <Container>
-        <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand href="/">Hopify</Navbar.Brand>
+        <Navbar bg="dark" variant="dark" expand="lg" className={ styles.colorNav }>
+          <Navbar.Brand href="/" className={ styles.navBrand }>Hopify</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/beers">Beers</Nav.Link>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
-              <NavDropdown title="Types" id="basic-nav-dropdown">
+              <NavDropdown title="Styles" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">IPA</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Seltzer</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Lager/Pilsner</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Wheat</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Stout</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Porter</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" />
               <Button variant="outline-primary">Search</Button>
             </Form>
           </Navbar.Collapse>

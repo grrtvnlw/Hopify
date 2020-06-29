@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
+import MapContainer from './MapContainer';
 
 export default class Breweries extends Component {
   constructor(props) {
@@ -37,13 +38,14 @@ export default class Breweries extends Component {
   render() {
     return (
       <Container>
-        <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand href="/">Hopify</Navbar.Brand>
+        <Navbar bg="dark" variant="dark" expand="lg" className={ styles.colorNav }>
+          <Navbar.Brand href="/" className={ styles.navBrand }>Hopify</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
+              <Nav.Link href="/breweries">Breweries</Nav.Link>
             </Nav>
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.movieName } onChange={ this.handleChange } />
@@ -53,6 +55,9 @@ export default class Breweries extends Component {
         </Navbar>
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
+          <div className={ styles.map }>
+            <MapContainer />
+          </div>
           { this.state.breweries.map((brewery, index) => {
 
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
@@ -60,16 +65,18 @@ export default class Breweries extends Component {
             return (
               <Card className={ styles.breweryCard } key={ index }>
                 <Card.Body>
-                  <Card.Title className={ styles.title }>
-                    { name && <h2>{ name }</h2> }
-                  </Card.Title>
-                  <Card.Text>
-                    { brewery_type && <p>Type: { brewery_type }</p> }
-                    { street && <p>Address: { street }, { city }, { state }</p> }
-                    { phone && <p>Phone: { phone }</p> }
-                    { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
-                    {/* <a href={ brewery.website }>Beer Menu</a>  */}
-                  </Card.Text>
+                  <div>
+                    <Card.Title className={ styles.title }>
+                      { name && <h2>{ name }</h2> }
+                    </Card.Title>
+                    <Card.Text>
+                      { brewery_type && <p>Type: { brewery_type }</p> }
+                      { street && <p>Address: { street }, { city }, { state }</p> }
+                      { phone && <p>Phone: { phone }</p> }
+                      { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
+                      {/* <a href={ brewery.website }>Beer Menu</a>  */}
+                    </Card.Text>
+                  </div>
                 </Card.Body>
               </Card>
             )

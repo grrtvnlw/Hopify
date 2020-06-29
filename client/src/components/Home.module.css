@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lemon&family=Quicksand:wght@600&display=swap");
+
 .home {
   text-align: center;
   margin-top: 10px;
@@ -8,15 +10,19 @@
 
 .home h1 {
   color: forestgreen;
-  font-size: 55px;
-  padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 65px;
+  font-family: 'Lemon', cursive;;
+  margin-bottom: 20px;
+}
+
+.home h3 {
+  color: forestgreen;
+  font-size: 35px;
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
 }
 
 img {
@@ -24,6 +30,6 @@ img {
   border-radius: 5px;
 }
 
-.navbar {
-  border-radius: 5px;
+.navBrand {
+  color: forestgreen !important;
 }

@@ -1,19 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Lemon&family=Quicksand:wght@600&display=swap");
+
 .beerDiv {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  height: 100%;
   background-color: #eee;
   background-repeat: no-repeat;
-  height: 100%;
-  padding-bottom: 10px;
 }
 
 .beerDiv h1 {
   color: forestgreen;
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
 .beerCard {
   margin: 10px;
   padding: 10px;
+}
+
+.colorNav Button {
+  color: forestgreen;
+  border-color: forestgreen;
+}
+
+.navBrand {
+  color: forestgreen !important;
 }
