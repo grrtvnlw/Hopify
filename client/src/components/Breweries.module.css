@@ -1,10 +1,12 @@
-.breweryDiv {
-  margin-top: 20px;
-}
-
 .breweryCard {
   margin: 10px;
   padding: 10px;
+}
+
+.breweryDiv h1 {
+  color: forestgreen;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .title {

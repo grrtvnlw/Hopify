@@ -16,13 +16,6 @@ export default class Home extends Component {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
-              {/* <NavDropdown title="Locations" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Atlanta</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Denver</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Bay Area</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown> */}
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -34,7 +27,7 @@ export default class Home extends Component {
           <header>
             <h1>Find beers and breweries in your city</h1>
           </header>
-          <img src={ pic }/>
+          <img src={ pic } alt=""/>
         </div>
       </Container>
     )

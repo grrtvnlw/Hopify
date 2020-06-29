@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
+import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 
 export default class Breweries extends Component {
@@ -7,17 +7,30 @@ export default class Breweries extends Component {
     super(props)
   
     this.state = {
-      breweries: [],
+      breweryName: '',
+      breweries: []
     }
   }
 
-  componentDidMount() {
-    fetch('/api/v1/breweries')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        breweries: data
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    let city = this.state.breweryName
+    fetch(`https://api.openbrewerydb.org/breweries?by_city=${city}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          console.log(data)
+          this.setState({
+            breweries: data,
+            breweryName: ''
+          })
+        }
       })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      breweryName: e.target.value
     })
   }
   
@@ -31,36 +44,33 @@ export default class Breweries extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
-              <NavDropdown title="Locations" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Atlanta</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Denver</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">San Francisco</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" />
+            <Form inline onSubmit={ this.handleFormSubmit }>
+              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.movieName } onChange={ this.handleChange } />
               <Button variant="outline-primary">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
         <div className={ styles.breweryDiv }>
-          <h1>Find breweries in your city</h1>
-          { this.state.breweries.map(brewery => {
+          <h1>Search for a city to find breweries</h1>
+          { this.state.breweries.map((brewery, index) => {
+
+            const { name, brewery_type, street, city, state, phone, website_url } = brewery;
+
             return (
-              <Card className={ styles.breweryCard }>
-                <Card.Title className={ styles.title }>
-                  <h1>{ brewery.name }</h1> 
-                  <img src={ brewery.images } />
-                </Card.Title>
-                <p>{ brewery.description }</p>
-                <ul>
-                  <li><b>Address: </b>{ brewery.streetAddress }, { brewery.locality }, { brewery.region }</li>
-                  <li><b>Phone: </b>{ brewery.phone }</li>
-                </ul>
-                <a href={ brewery.website }>{ brewery.website }</a> 
-                <a href={ brewery.website }>Beer Menu</a> 
+              <Card className={ styles.breweryCard } key={ index }>
+                <Card.Body>
+                  <Card.Title className={ styles.title }>
+                    { name && <h2>{ name }</h2> }
+                  </Card.Title>
+                  <Card.Text>
+                    { brewery_type && <p>Type: { brewery_type }</p> }
+                    { street && <p>Address: { street }, { city }, { state }</p> }
+                    { phone && <p>Phone: { phone }</p> }
+                    { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
+                    {/* <a href={ brewery.website }>Beer Menu</a>  */}
+                  </Card.Text>
+                </Card.Body>
               </Card>
             )
           })}
