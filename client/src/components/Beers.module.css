@@ -59,3 +59,17 @@ img {
   margin: 5px;
   padding: 2px;
 }
+
+.favDiv {
+  margin: 10px 0px;
+  padding: 10px 0px;
+  height: 100%;
+  background-color: #eee;
+  background-repeat: no-repeat;
+}
+
+.favDiv h1 {
+  color: forestgreen;
+  padding: 10px;
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}

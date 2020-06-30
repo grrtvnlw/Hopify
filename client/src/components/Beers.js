@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { addFavorite, deleteFavorite } from './redux/action';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Beers.module.css';
 
-export default class Beers extends Component {
+class Beers extends Component {
   constructor(props) {
     super(props);
   
@@ -93,8 +95,14 @@ export default class Beers extends Component {
                       <li><b>IBU: </b>{ beer.ibu }</li>
                       <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                     </ul>
-                    <Button variant="success" className={ styles.button }>Favorite 🍺</Button> 
-                    <Button variant="success" className={ styles.button }>Wishlist 🌳</Button> 
+                    {/* {
+                    this.props.favorites.findIndex((favorite) => this.props.favorite.name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
+                    :
+                      <Button className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
+                    } */}
+                    <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
+                    <Button variant="success" className={ styles.button }>Wishlist <span>🌳</span></Button> 
                   </div>
                   <div className={ styles.right }>
                     <a href={ beer.link }><img src={ beer.image} /></a>
@@ -108,3 +116,19 @@ export default class Beers extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    favorites: state.favorites
+  }
+}
+
+const mapDispatchToProps = {
+  addFavorite,
+  deleteFavorite
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Beers)
