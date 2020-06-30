@@ -70,6 +70,8 @@ export default class Beers extends Component {
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
+              <Nav.Link href="/favorites">Favorites</Nav.Link>
+              <Nav.Link href="/wishlist">Wishlist</Nav.Link>
             </Nav>
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />

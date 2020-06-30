@@ -1,14 +1,10 @@
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import styles from './Home.module.css';
-import pic from '../Hops_IPA_Pour-BA-1200.jpg';
-{/* <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet"></link> */}
+import React from 'react'
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
+import styles from './Favlist.module.css';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <Container>
+export default function Wishlist() {
+  return (
+    <Container>
         <Navbar bg="dark" variant="dark" expand="lg" className={ styles.colorNav }>
           <Navbar.Brand href="/" className={ styles.navBrand }>Hopify</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,16 +16,15 @@ export default class Home extends Component {
               <Nav.Link href="/favorites">Favorites</Nav.Link>
               <Nav.Link href="/wishlist">Wishlist</Nav.Link>
             </Nav>
+            {/* <Form inline onSubmit={ this.handleFormSubmit }>
+              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
+              <Button variant="outline-primary">Search</Button>
+            </Form> */}
           </Navbar.Collapse>
         </Navbar>
-        <div className={ styles.home }>
-          <header>
-            <h1>H🌳pify</h1>
-            <h3>Find beers and breweries in your city</h3>
-          </header>
-          <img src={ pic } alt=""/>
+        <div className={ styles.favDiv }>
+          <h1>Wishlist</h1>
         </div>
       </Container>
-    )
-  }
+  )
 }
