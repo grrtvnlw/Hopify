@@ -60,10 +60,10 @@ export default class Breweries extends Component {
         </Navbar>
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
-          {/* <MappyMap /> */}
-          <div className={ styles.mapContainer }>
+          <MappyMap breweries={ this.state.breweries } />
+          {/* <div className={ styles.mapContainer }>
             <MapContainer breweries={ this.state.breweries }/>
-          </div>
+          </div> */}
           { this.state.breweries.map((brewery, index) => {
 
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
