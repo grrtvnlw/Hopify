@@ -9,14 +9,14 @@ export default class Breweries extends Component {
     super(props)
   
     this.state = {
-      breweryName: '',
+      cityName: '',
       breweries: []
     }
   }
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    let city = this.state.breweryName
+    let city = this.state.cityName
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${city}`)
       .then(res => res.json())
       .then(data => {
@@ -28,7 +28,7 @@ export default class Breweries extends Component {
           console.log(data)
           this.setState({
             breweries: data,
-            breweryName: ''
+            cityName: ''
           })
         }
       })
@@ -36,7 +36,7 @@ export default class Breweries extends Component {
 
   handleChange = (e) => {
     this.setState({
-      breweryName: e.target.value
+      cityName: e.target.value
     })
   }
   
@@ -53,7 +53,7 @@ export default class Breweries extends Component {
               <Nav.Link href="/breweries">Breweries</Nav.Link>
             </Nav>
             <Form inline onSubmit={ this.handleFormSubmit }>
-              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.movieName } onChange={ this.handleChange } />
+              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
               <Button variant="outline-primary">Search</Button>
             </Form>
           </Navbar.Collapse>

@@ -69,6 +69,38 @@ module.exports = {
       favorite: true,
       createdAt: new Date(),
       updatedAt: new Date() 
+    },
+    {
+      name: 'Pliny the Elder',    
+      description: 'Pliny the Elder is brewed with Amarillo, Centennial, CTZ, and Simcoe hops. It is well-balanced with malt, hops, and alcohol, slightly bitter with a fresh hop aroma of floral, citrus, and pine. Best enjoyed FRESH! That is why we make it in such limited supply. Actual bottling date is printed on each bottle!',    
+      link: 'https://russianriverbrewing.com/pliny-the-elder/',
+      image: 'https://russianriverbrewing.com/wp-content/uploads/2018/04/yearroundbottles_large_6b60a081-5de8-4023-a04a-5eafc669b48e.jpg',
+      brewery: 'Russian River Brewing Company',
+      breweryLink: 'https://russianriverbrewing.com/',
+      city: 'Santa Rosa',
+      abv: '8.0%',    
+      ibu: 'N/A',    
+      style: 'IPA',    
+      wishlist: false,
+      favorite: true,
+      createdAt: new Date(),
+      updatedAt: new Date() 
+    },
+    {
+      name: 'Dirty Beaches',    
+      description: 'WE GOT DOWN AND DIRTY WITH OUR TROPICAL WHEAT. A SPIRITED COLLAB WITH VICTORY BRANDS. THIS HYBRID WHEAT & IPA WHETS YOUR PALATE. JUST LIKE YOU BEACHES LIKE IT. EASY DRINKING WITH A SOFT CREAMY BODY AND WAVES OF TROPICAL FRUIT AROMAS. DIRTY BEACHES IS FILTHY GOOD.',    
+      link: 'https://scofflawbeer.com/beaches.html',
+      image: 'https://scofflawbeer.com/img/SCOFFLAW-DIRTYBEACHES-1000X1000.png',
+      brewery: 'Scofflaw Brewing Company',
+      breweryLink: 'https://scofflawbeer.com/',
+      city: 'Atlanta',
+      abv: '6.3%',    
+      ibu: '45',    
+      style: 'Wheat',    
+      wishlist: false,
+      favorite: true,
+      createdAt: new Date(),
+      updatedAt: new Date() 
     }
   ], {});
 

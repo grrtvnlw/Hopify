@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import mapStyles from './mapStyles'
-// import { hop } from './hop.svg'
+// import { hop } from '/client/'
 
 function Map(props) {
   return (
@@ -39,11 +39,10 @@ export default function MappyMap(props) {
             onClick={() => {
               setSelectedBrewery(brewery)
             }}
-            icon={{
-              icon: '/hop.svg'
-              // url: './hop.svg',
-              // scaledSize: new window.google.maps.Size(25, 25)
-            }}
+            // icon={{
+            //   url: '/logo.svg',
+            //   scaledSize: new window.google.maps.Size(25, 25)
+            // }}
           />
         )
       })}
@@ -61,8 +60,8 @@ export default function MappyMap(props) {
           <div>
             <h2><a href={selectedBrewery.website_url} target="_blank">{selectedBrewery.name}</a></h2>
             <div>
-              <p><b>Address:</b> {selectedBrewery.street}</p>
-              <p><b>Phone Number:</b> {selectedBrewery.phone}</p>
+              { selectedBrewery.street && <p><b>Address:</b> {selectedBrewery.street}</p> }
+              { selectedBrewery.phone && <p><b>Phone Number:</b> {selectedBrewery.phone}</p> }
             </div>
           </div>
         </InfoWindow>

@@ -11,15 +11,29 @@ export default class Beers extends Component {
     }
   }
   
-componentDidMount() {
-  fetch('/api/v1/beers')
-  .then(res => res.json())
-  .then(data => {
-    this.setState({
-      beers: data
-    })
-  })
-}
+// componentDidMount() {
+//   fetch('/api/v1/beers')
+//   .then(res => res.json())
+//   .then(data => {
+//     this.setState({
+//       beers: data
+//     })
+//   })
+// }
+
+  fetchData = (nothing, e) => {
+    // console.log('hello!')
+    console.log(e.target.textContent)
+    let style = e.target.textContent
+    fetch(`/api/v1/beers/${style}`)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data)
+        this.setState({
+          beers: data
+        })
+      })
+  }
 
   render() {
     return (
@@ -32,13 +46,14 @@ componentDidMount() {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
-              <NavDropdown title="Styles" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">IPA</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.1">Seltzer</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Lager/Pilsner</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Wheat</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Stout</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Porter</NavDropdown.Item>
+              <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.fetchData}>
+                <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
+                <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
+                <NavDropdown.Item value='Lager'>Lager</NavDropdown.Item>
+                <NavDropdown.Item value='Pilsner'>Pilsner</NavDropdown.Item>
+                <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
+                <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
+                <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form inline>
