@@ -17,6 +17,18 @@ module.exports = {
       link: {
         type: Sequelize.TEXT
       },
+      image: {
+        type: Sequelize.TEXT
+      },
+      brewery: {
+        type: Sequelize.TEXT
+      },
+      breweryLink: {
+        type: Sequelize.TEXT
+      },
+      city: {
+        type: Sequelize.TEXT
+      },
       abv: {
         type: Sequelize.TEXT
       },

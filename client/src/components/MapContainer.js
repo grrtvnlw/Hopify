@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import Geocode from 'react-geocode';
-import styles from './Breweries.module.css';
+import styles from './MapContainer.module.css';
 
 const mapStyles = {
-  width: '880px',
-  height: '400px',
+  // width: '880px',
+  // height: '400px',
+  display: 'flex',
+  border: '1px solid red',
+  // margin: '10px',
+  // width: '80%',
+  // height: '45%',
 };
 
 class MapContainer extends Component {
@@ -21,24 +26,15 @@ class MapContainer extends Component {
   }
   }
 
-  onMarkerClick = (props, marker, store, e) => {
-
+  onMarkerClick = (props, marker) => {
     this.setState({
         selectedPlace: props,
         activeMarker: marker,
         showingInfoWindow: true,
     });
-    return (
-        <InfoWindow marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow} name={props.name} >
-          <div>
-            <h1>{this.state.selectedPlace.name}</h1>
-          </div>
-        </InfoWindow >
-    )
 }
 
-  onMapClicked = (props) => {
+  onMapClicked = () => {
     if (this.state.showingInfoWindow) {
         this.setState({
             showingInfoWindow: false,
@@ -58,6 +54,7 @@ class MapContainer extends Component {
           google={this.props.google}
           onClick={this.onMapClicked}
           zoom={10}
+          // className={ styles.map }
           style={mapStyles}
           initialCenter={{ lat: 33.76333225, lng: -84.3870607355802 }}
         >
@@ -73,12 +70,12 @@ class MapContainer extends Component {
           {this.state.stores.map((store, index) => {
             return (
               <InfoWindow marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow} name={store.name} id={index} address={store.formatted_address}>
+                visible={this.state.activeMarker && this.state.activeMarker.id  === index} id={index} name={store.name} street={store.street}>
                 <div>
-                  <h4>{ this.state.selectedPlace.name }</h4>
-                  <h6>{ this.state.selectedPlace.street }</h6>
-                  <p>{ this.state.selectedPlace.phone }</p>
-                  <p>{ this.state.selectedPlace.website }</p>
+                  <h4>{ store.name }</h4>
+                  <h6>{ store.street }</h6>
+                  <p>{ store.phone }</p>
+                  <p>{ store.website }</p>
                 </div>
               </InfoWindow >
             )
