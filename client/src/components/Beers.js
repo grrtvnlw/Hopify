@@ -11,29 +11,36 @@ class Beers extends Component {
     this.state = {
       cityName: '',
       beers: [],
+      styleName: ''
     }
   }
-  
+
   handleFormSubmit = (e) => {
     e.preventDefault();
-    let city = this.state.cityName
-    console.log(city)
-    fetch(`/api/v1/beer/${city}`)
+    const { cityName: city, styleName: style } = this.state
+    fetch(`/api/v1/beers?city=${city}&style=${style}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        // if (data) {
-        //   data = data.map(brewery => {
-        //     brewery.display = false;
-        //     return brewery
-        //   })
           this.setState({
             cityName: '',
-            beers: data
+            beers: data,
+            style: ''
           })
         })
-      // })
   }
+  
+  // handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   let city = this.state.cityName
+  //   fetch(`/api/v1/beer/${city}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //         this.setState({
+  //           cityName: '',
+  //           beers: data
+  //         })
+  //       })
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -41,15 +48,23 @@ class Beers extends Component {
     })
   }
 
+  // fetchData = (empty, e) => {
+  //   let style = e.target.textContent
+  //   fetch(`/api/v1/beers/${style}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         beers: data
+  //       })
+  //     })
+  // }
+
   fetchData = (empty, e) => {
     let style = e.target.textContent
-    fetch(`/api/v1/beers/${style}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          beers: data
-        })
-      })
+    this.setState({
+      styleName: style
+    })
+    
   }
 
   render() {
