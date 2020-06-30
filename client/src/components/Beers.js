@@ -60,7 +60,6 @@ export default class Beers extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
-              <Nav.Link href="/breweries">Breweries</Nav.Link>
               <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.fetchData}>
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
                 <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
@@ -70,6 +69,7 @@ export default class Beers extends Component {
                 <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="/breweries">Breweries</Nav.Link>
             </Nav>
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
