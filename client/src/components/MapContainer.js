@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import Geocode from 'react-geocode';
-import styles from './MapContainer.module.css';
+// import styles from './MapContainer.module.css';
+// import styles from './Breweries.module.css';
 
 const mapStyles = {
-  // width: '880px',
-  // height: '400px',
-  display: 'flex',
-  border: '1px solid red',
+  width: '880px',
+  height: '400px',
+  // display: 'flex',
+  // border: '1px solid red',
   // margin: '10px',
   // width: '80%',
   // height: '45%',
