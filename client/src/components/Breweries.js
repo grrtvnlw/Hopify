@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
-import MapContainer from './MapContainer';
+// import MapContainer from './MapContainer';
 import MappyMap from './MappyMap';
 
 export default class Breweries extends Component {
@@ -20,18 +20,17 @@ export default class Breweries extends Component {
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${city}`)
       .then(res => res.json())
       .then(data => {
-        if (data) {
-          data = data.map(brewery => {
-            brewery.display = false;
-            return brewery
-          })
-          console.log(data)
+        // if (data) {
+        //   data = data.map(brewery => {
+        //     brewery.display = false;
+        //     return brewery
+        //   })
           this.setState({
             breweries: data,
             cityName: ''
           })
-        }
-      })
+        })
+      // })
   }
 
   handleChange = (e) => {

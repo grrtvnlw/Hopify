@@ -41,6 +41,19 @@ router.get('/beers/:style', (req, res) => {
   })
 });
 
+/* GET beer by city. */
+router.get('/beer/:city', (req, res) => {
+  console.log(req.params.city)
+  db.Beers.findAll({
+    where: {
+      city: req.params.city
+    }
+  })
+  .then(data => {
+    res.json(data)
+  })
+});
+
 /* GET beer page. */
 router.get('/beers/:id', (req, res) => {
   db.Beers.findByPk(req.params.id, {

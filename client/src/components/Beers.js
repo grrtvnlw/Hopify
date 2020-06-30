@@ -7,28 +7,43 @@ export default class Beers extends Component {
     super(props);
   
     this.state = {
+      cityName: '',
       beers: [],
     }
   }
   
-// componentDidMount() {
-//   fetch('/api/v1/beers')
-//   .then(res => res.json())
-//   .then(data => {
-//     this.setState({
-//       beers: data
-//     })
-//   })
-// }
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    let city = this.state.cityName
+    console.log(city)
+    fetch(`/api/v1/beer/${city}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        // if (data) {
+        //   data = data.map(brewery => {
+        //     brewery.display = false;
+        //     return brewery
+        //   })
+          this.setState({
+            cityName: '',
+            beers: data
+          })
+        })
+      // })
+  }
 
-  fetchData = (nothing, e) => {
-    // console.log('hello!')
-    console.log(e.target.textContent)
+  handleChange = (e) => {
+    this.setState({
+      cityName: e.target.value
+    })
+  }
+
+  fetchData = (empty, e) => {
     let style = e.target.textContent
     fetch(`/api/v1/beers/${style}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         this.setState({
           beers: data
         })
@@ -56,17 +71,17 @@ export default class Beers extends Component {
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" />
+            <Form inline onSubmit={ this.handleFormSubmit }>
+              <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
               <Button variant="outline-primary">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
         <div className={ styles.beerDiv }>
           <h1>Search for a city and a style to find beers</h1>
-          { this.state.beers.map(beer => {
+          { this.state.beers.map((beer, index) => {
             return (
-              <Card className={ styles.beerCard }>
+              <Card className={ styles.beerCard } key={index}>
                 <h2>{ beer.name }</h2>
                 <p>{ beer.description }</p>
                 <ul>
