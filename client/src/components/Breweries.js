@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 import MapContainer from './MapContainer';
+import MappyMap from './MappyMap';
 
 export default class Breweries extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ export default class Breweries extends Component {
         </Navbar>
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
+          {/* <MappyMap /> */}
           <div className={ styles.mapContainer }>
             <MapContainer breweries={ this.state.breweries }/>
           </div>
