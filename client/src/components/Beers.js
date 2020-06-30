@@ -10,8 +10,8 @@ class Beers extends Component {
   
     this.state = {
       cityName: '',
-      beers: [],
-      styleName: ''
+      styleName: '',
+      beers: []
     }
   }
 
@@ -23,8 +23,8 @@ class Beers extends Component {
       .then(data => {
           this.setState({
             cityName: '',
-            beers: data,
-            style: ''
+            style: '',
+            beers: data
           })
         })
   }
@@ -59,12 +59,11 @@ class Beers extends Component {
   //     })
   // }
 
-  fetchData = (empty, e) => {
+  saveData = (empty, e) => {
     let style = e.target.textContent
     this.setState({
       styleName: style
-    })
-    
+    }) 
   }
 
   render() {
@@ -77,7 +76,7 @@ class Beers extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
-              <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.fetchData}>
+              <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.saveData}>
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
                 <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
                 <NavDropdown.Item value='Lager'>Lager</NavDropdown.Item>
@@ -97,7 +96,7 @@ class Beers extends Component {
           </Navbar.Collapse>
         </Navbar>
         <div className={ styles.beerDiv }>
-          <h1>Search for a city and a style to find beers</h1>
+          <h1>Select a style and a city to find beers</h1>
           { this.state.beers.map((beer, index) => {
             return (
               <Card className={ styles.beerCard } key={index}>

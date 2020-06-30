@@ -33,3 +33,7 @@ img {
 .navBrand {
   color: forestgreen !important;
 }
+
+img {
+  max-height: 60%;
+}
