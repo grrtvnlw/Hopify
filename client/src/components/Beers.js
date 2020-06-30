@@ -82,13 +82,22 @@ export default class Beers extends Component {
           { this.state.beers.map((beer, index) => {
             return (
               <Card className={ styles.beerCard } key={index}>
-                <h2>{ beer.name }</h2>
-                <p>{ beer.description }</p>
-                <ul>
-                  <li><b>ABV: </b>{ beer.abv }</li>
-                  <li><b>IBU: </b>{ beer.ibu }</li>
-                </ul>
-                <a href={ beer.link }>{ beer.link }</a>
+                <div className={ styles.wrapper }>
+                  <div className={ styles.left }>
+                    <h2>{ beer.name }</h2> 
+                    <p className={ styles.description }>{ beer.description }</p>
+                    <ul>
+                      <li><b>ABV: </b>{ beer.abv }</li>
+                      <li><b>IBU: </b>{ beer.ibu }</li>
+                      <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
+                    </ul>
+                    <Button variant="success" className={ styles.button }>Favorite 🍺</Button> 
+                    <Button variant="success" className={ styles.button }>Wishlist 🌳</Button> 
+                  </div>
+                  <div className={ styles.right }>
+                    <a href={ beer.link }><img src={ beer.image} /></a>
+                  </div>
+                </div>
               </Card>
             )
           })}
