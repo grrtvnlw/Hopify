@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavoriteBeer, deleteFavoriteBeer, addWishlistBeer, deleteWishlistBeer } from './redux/action';
+import { addFavoriteBeer, deleteFavoriteBeer, addWishlistBeer, deleteWishlistBeer, addCity, deleteCity, addStyle, deleteStyle } from './redux/action';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Beers.module.css';
 
@@ -85,6 +85,7 @@ class Beers extends Component {
                 <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
                 <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
+                <NavDropdown.Item value=''>All</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
               <Nav.Link href="/favorites">Favorites</Nav.Link>
@@ -98,6 +99,7 @@ class Beers extends Component {
         </Navbar>
         <div className={ styles.beerDiv }>
           <h1>Select a style and a city to find beers</h1>
+          <div>{ this.state.styleName && this.state.styleName + 's'}  { this.state.cityName && 'in ' + this.state.cityName }</div>
           { this.state.beers.map((beer, index) => {
             return (
               <Card className={ styles.beerCard } key={index}>
@@ -139,7 +141,9 @@ class Beers extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteBeers: state.favoriteBeers,
-    wishlistBeers: state.wishlistBeers
+    wishlistBeers: state.wishlistBeers,
+    cityName: state.cityName,
+    styleName: state.styleName
   }
 }
 
@@ -147,7 +151,11 @@ const mapDispatchToProps = {
   addFavoriteBeer,
   deleteFavoriteBeer,
   addWishlistBeer,
-  deleteWishlistBeer
+  deleteWishlistBeer,
+  addStyle,
+  deleteStyle,
+  addCity,
+  deleteCity
 }
 
 export default connect(

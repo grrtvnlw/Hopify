@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Navbar, Nav, Button, Container, Card } from 'react-bootstrap'
-import { deleteWishlistBeer, deleteWishlistBrewery } from './redux/action';
+import { deleteWishlistBeer, deleteWishlistBrewery, addFavoriteBeer, deleteFavoriteBeer, addFavoriteBrewery, deleteFavoriteBrewery } from './redux/action';
 // import styles from './Favlist.module.css';
 import styles from './Beers.module.css';
 
@@ -37,16 +37,17 @@ class Wishlist extends Component {
                         <li><b>IBU: </b>{ beer.ibu }</li>
                         <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                       </ul>
-                        {this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Favorite <span>🍺</span></Button> 
-                        :
-                        <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unfavorite <span>🍺</span></Button>
+                        {
+                          this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                            <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span>🍺</span></Button> 
+                          :
+                            <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
                         }
                         {
-                        this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span>🌳</span></Button> 
-                        :
-                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span>🌳</span></Button>
+                          this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                            <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span>🌳</span></Button> 
+                          : 
+                            <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span>🌳</span></Button>
                         }
                     </div>
                     <div className={ styles.right }>
@@ -75,10 +76,16 @@ class Wishlist extends Component {
                       { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
                     </Card.Text>
                   {
-                    this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                    <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
+                    this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
                     :
-                    <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                  }
+                  {
+                    this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span>🌳</span></Button> 
+                    :
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span>🌳</span></Button>
                   }
                   </div>
                 </div>
@@ -94,13 +101,19 @@ class Wishlist extends Component {
 const mapStateToProps = (state) => {
   return {
     wishlistBeers: state.wishlistBeers,
-    wishlistBreweries: state.wishlistBreweries
+    wishlistBreweries: state.wishlistBreweries,
+    favoriteBeers: state.favoriteBeers,
+    favoriteBreweries: state.favoriteBreweries
   }
 }
 
 const mapDispatchToProps = {
   deleteWishlistBeer,
-  deleteWishlistBrewery
+  deleteWishlistBrewery,
+  addFavoriteBeer,
+  deleteFavoriteBeer,
+  addFavoriteBrewery,
+  deleteFavoriteBrewery,
 }
 
 export default connect(

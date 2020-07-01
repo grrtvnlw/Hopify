@@ -6,8 +6,12 @@ export const ADD_WISHLIST_BEER = 'ADD_WISHLIST_BEER';
 export const DELETE_WISHLIST_BEER = 'DELETE_WISHLIST_BEER';
 export const ADD_WISHLIST_BREWERY = 'ADD_WISHLIST_BREWERY';
 export const DELETE_WISHLIST_BREWERY = 'DELETE_WISHLIST_BREWERY';
+export const ADD_STYLE = 'ADD_STYLE';
+export const DELETE_STYLE = 'DELETE_STYLE';
+export const ADD_CITY = 'ADD_CITY';
+export const DELETE_CITY = 'DELETE_CITY';
 
-export function addFavoriteBeer(value, category) {
+export function addFavoriteBeer(value) {
   return {
     type: ADD_FAVORITE_BEER,
     value
@@ -59,6 +63,34 @@ export function addWishlistBrewery(value) {
 export function deleteWishlistBrewery(value) {
   return {
     type: DELETE_WISHLIST_BREWERY,
+    value
+  }
+}
+
+export function addStyle(value) {
+  return {
+    type: ADD_STYLE,
+    value
+  }
+}
+
+export function deleteStyle(value) {
+  return {
+    type: DELETE_STYLE,
+    value
+  }
+}
+
+export function addCity(value) {
+  return {
+    type: ADD_CITY,
+    value
+  }
+}
+
+export function deleteCity(value) {
+  return {
+    type: DELETE_CITY,
     value
   }
 }

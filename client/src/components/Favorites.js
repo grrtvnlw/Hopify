@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Navbar, Nav, Button, Container, Card } from 'react-bootstrap'
-import { deleteFavoriteBeer, deleteFavoriteBrewery } from './redux/action';
+import { deleteFavoriteBeer, deleteFavoriteBrewery, addWishlistBeer, addWishlistBrewery, deleteWishlistBeer, deleteWishlistBrewery } from './redux/action';
 // import styles from './Favlist.module.css';
 import styles from './Beers.module.css';
 
@@ -37,13 +37,18 @@ class Favorites extends Component {
                         <li><b>IBU: </b>{ beer.ibu }</li>
                         <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                       </ul>
-                      {this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                        <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span>🍺</span></Button> 
-                      :
-                        <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
+                      {
+                        this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span>🍺</span></Button> 
+                        :
+                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
                       }
-                      {/* <Button variant="success" className={ styles.button }>Favorite 🍺</Button>  */}
-                      <Button variant="success" className={ styles.button }>Wishlist 🌳</Button> 
+                      {
+                        this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span>🌳</span></Button> 
+                        :
+                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span>🌳</span></Button>
+                      }
                     </div>
                     <div className={ styles.right }>
                       <a href={ beer.link }><img src={ beer.image} /></a>
@@ -72,9 +77,15 @@ class Favorites extends Component {
                     </Card.Text>
                   {
                     this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                    <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
                     :
-                    <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                  }
+                  {
+                    this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span>🌳</span></Button> 
+                    :
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span>🌳</span></Button>
                   }
                   </div>
                 </div>
@@ -90,11 +101,17 @@ class Favorites extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteBeers: state.favoriteBeers,
-    favoriteBreweries: state.favoriteBreweries
+    favoriteBreweries: state.favoriteBreweries,
+    wishlistBeers: state.wishlistBeers,
+    wishlistBreweries: state.wishlistBreweries
   }
 }
 
 const mapDispatchToProps = {
+  addWishlistBeer,
+  deleteWishlistBeer,
+  addWishlistBrewery,
+  deleteWishlistBrewery,
   deleteFavoriteBeer,
   deleteFavoriteBrewery
 }
