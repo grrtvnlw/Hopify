@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavorite, deleteFavorite } from './redux/action';
+import { addFavoriteBrewery, deleteFavoriteBrewery } from './redux/action';
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 import MapContainer from './MapContainer';
@@ -24,7 +24,7 @@ class Breweries extends Component {
       .then(data => {
           this.setState({
             breweries: data,
-            cityName: ''
+            // cityName: ''
           })
         })
   }
@@ -80,10 +80,10 @@ class Breweries extends Component {
                     </Card.Text>
                   </div>
                   {
-                    this.props.favorites.findIndex((favorite) => name === favorite.name) === -1 ? 
-                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(brewery)}}>Favorite <span>🍺</span></Button> 
+                    this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
                     :
-                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavorite(brewery)}}>Unfavorite <span>🍺</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
                     }
                 </Card.Body>
               </Card>
@@ -97,13 +97,13 @@ class Breweries extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favorites: state.favorites
+    favoriteBreweries: state.favoriteBreweries
   }
 }
 
 const mapDispatchToProps = {
-  addFavorite,
-  deleteFavorite
+  addFavoriteBrewery,
+  deleteFavoriteBrewery
 }
 
 export default connect(

@@ -25,15 +25,12 @@ header {
   padding: 10px;
 }
 
-img {
+.banner {
   max-width: 95%;
   border-radius: 5px;
+  max-height: 70%;
 }
 
 .navBrand {
   color: forestgreen !important;
-}
-
-img {
-  max-height: 70%;
 }

@@ -27,7 +27,7 @@ export default class Home extends Component {
             <h1>H🌳pify</h1>
             <h3>Find beers and breweries in your city</h3>
           </header>
-          <img src={ pic } alt=""/>
+          <img src={ pic } alt="" className={ styles.banner }/>
         </div>
       </Container>
     )

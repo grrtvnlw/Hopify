@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Navbar, Nav, Button, Container, Card } from 'react-bootstrap'
-import { deleteFavorite } from './redux/action';
+import { deleteFavoriteBeer, deleteFavoriteBrewery } from './redux/action';
 // import styles from './Favlist.module.css';
 import styles from './Beers.module.css';
 
@@ -24,7 +24,8 @@ class Favorites extends Component {
           </Navbar>
           <div className={ styles.favDiv }>
             <h1>Favorite Beers and Breweries</h1>
-            { this.props.favorites.map((beer, index) => {
+            <h2>Beers</h2>
+            { this.props.favoriteBeers.map((beer, index) => {
               return (
                 <Card className={ styles.beerCard } key={index}>
                   <div className={ styles.wrapper }>
@@ -36,10 +37,10 @@ class Favorites extends Component {
                         <li><b>IBU: </b>{ beer.ibu }</li>
                         <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                       </ul>
-                      {this.props.favorites.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                        <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
+                      {this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                        <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span>🍺</span></Button> 
                       :
-                        <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
+                        <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
                       }
                       {/* <Button variant="success" className={ styles.button }>Favorite 🍺</Button>  */}
                       <Button variant="success" className={ styles.button }>Wishlist 🌳</Button> 
@@ -51,6 +52,14 @@ class Favorites extends Component {
                 </Card>
               )
             })}
+            <h2>Breweries</h2>
+            { this.props.favoriteBreweries.map((brewery, index) => {
+              return (
+                <Card key={index}>
+                  <Card.Title>{brewery.name}</Card.Title>
+                </Card>
+              )
+            })}
           </div>
         </Container>
     )
@@ -59,12 +68,14 @@ class Favorites extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favorites: state.favorites
+    favoriteBeers: state.favoriteBeers,
+    favoriteBreweries: state.favoriteBreweries
   }
 }
 
 const mapDispatchToProps = {
-  deleteFavorite
+  deleteFavoriteBeer,
+  deleteFavoriteBrewery
 }
 
 export default connect(
