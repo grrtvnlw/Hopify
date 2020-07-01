@@ -29,8 +29,7 @@ class Beers extends Component {
           cityName,
           styleName       
         }  
-      } 
-      else {
+      } else {
         fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
         .then(res => res.json())
           .then(data => {
@@ -88,7 +87,6 @@ class Beers extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
-              {/* <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={() => this.props.addStyle}> */}
               <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.saveData}>
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
                 <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
@@ -105,7 +103,6 @@ class Beers extends Component {
               <Nav.Link href="/favorites">Favorites</Nav.Link>
               <Nav.Link href="/wishlist">Wishlist</Nav.Link>
             </Nav>
-            {/* <Form inline onSubmit={ this.props.addCity }> */}
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
               <Button type="submit" variant="outline-primary">Search</Button>

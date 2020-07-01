@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import mapStyles from './mapStyles'
-import beerImg from './beer.png'
+import pic from './beer.png'
 
 function Map(props) {
   return (
     <GoogleMap 
       defaultZoom={11}
       defaultCenter={{ lat: 33.76333225, lng: -84.3870607355802 }}
-      // defaultOptions={{ styles: mapStyles }}
+      defaultOptions={{ styles: mapStyles }}
     >
       {props.children}
     </GoogleMap>
@@ -39,10 +39,10 @@ export default function MappyMap(props) {
             onClick={() => {
               setSelectedBrewery(brewery)
             }}
-            // icon={{
-            //   url: './hop.svg',
-            //   scaledSize: new window.google.maps.Size(25, 25)
-            // }}
+            icon={{
+              url: pic,
+              scaledSize: new window.google.maps.Size(25, 25)
+            }}
           />
         )
       })}

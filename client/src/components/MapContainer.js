@@ -57,7 +57,7 @@ class MapContainer extends Component {
           onClick={this.onMapClicked}
           zoom={6}
           // className={ styles.map }
-          // style={mapStyles}
+          style={mapStyles}
           initialCenter={{ lat: 33.76333225, lng: -84.3870607355802 }}
         >
           {this.state.stores.map((store, index) => {
