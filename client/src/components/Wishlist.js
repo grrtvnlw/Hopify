@@ -51,7 +51,7 @@ class Wishlist extends Component {
                         }
                     </div>
                     <div className={ styles.right }>
-                      <a href={ beer.link }><img src={ beer.image} /></a>
+                      <a href={ beer.link }><img src={ beer.image} className={ styles.beerImage } /></a>
                     </div>
                   </div>
                 </Card>

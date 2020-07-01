@@ -7,6 +7,11 @@
   color: forestgreen !important;
 }
 
+.beerImage {
+  height: 100%;
+  width: 100%;
+}
+
 .favDiv {
   margin: 10px 0px;
   padding: 10px 0px;
