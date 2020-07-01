@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Navbar, Nav, Button, Container, Card } from 'react-bootstrap'
+import { deleteFavorite } from './redux/action';
 // import styles from './Favlist.module.css';
 import styles from './Beers.module.css';
 
 class Favorites extends Component {
-  rconst 
   render() {
     return (
       <Container>
@@ -36,7 +36,12 @@ class Favorites extends Component {
                         <li><b>IBU: </b>{ beer.ibu }</li>
                         <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                       </ul>
-                      <Button variant="success" className={ styles.button }>Favorite 🍺</Button> 
+                      {this.props.favorites.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                        <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
+                      :
+                        <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
+                      }
+                      {/* <Button variant="success" className={ styles.button }>Favorite 🍺</Button>  */}
                       <Button variant="success" className={ styles.button }>Wishlist 🌳</Button> 
                     </div>
                     <div className={ styles.right }>
@@ -58,8 +63,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = {
+  deleteFavorite
+}
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(Favorites);
 

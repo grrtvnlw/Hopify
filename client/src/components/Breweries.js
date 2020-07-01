@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { addFavorite, deleteFavorite } from './redux/action';
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 import MapContainer from './MapContainer';
 import MappyMap from './MappyMap';
 
-export default class Breweries extends Component {
+class Breweries extends Component {
   constructor(props) {
     super(props)
   
@@ -20,17 +22,11 @@ export default class Breweries extends Component {
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${city}`)
       .then(res => res.json())
       .then(data => {
-        // if (data) {
-        //   data = data.map(brewery => {
-        //     brewery.display = false;
-        //     return brewery
-        //   })
           this.setState({
             breweries: data,
             cityName: ''
           })
         })
-      // })
   }
 
   handleChange = (e) => {
@@ -61,9 +57,9 @@ export default class Breweries extends Component {
         </Navbar>
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
-          {/* <MappyMap breweries={ this.state.breweries } /> */}
+          <MappyMap breweries={ this.state.breweries } />
           {/* <div className={ styles.mapContainer }>  */}
-            <MapContainer breweries={ this.state.breweries }/> 
+            {/* <MapContainer breweries={ this.state.breweries }/>  */}
           {/* </div> */}
           { this.state.breweries.map((brewery, index) => {
 
@@ -81,9 +77,14 @@ export default class Breweries extends Component {
                       { street && <p>Address: { street }, { city }, { state }</p> }
                       { phone && <p>Phone: { phone }</p> }
                       { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
-                      {/* <a href={ brewery.website }>Beer Menu</a>  */}
                     </Card.Text>
                   </div>
+                  {
+                    this.props.favorites.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(brewery)}}>Favorite <span>🍺</span></Button> 
+                    :
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavorite(brewery)}}>Unfavorite <span>🍺</span></Button>
+                    }
                 </Card.Body>
               </Card>
             )
@@ -93,3 +94,19 @@ export default class Breweries extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    favorites: state.favorites
+  }
+}
+
+const mapDispatchToProps = {
+  addFavorite,
+  deleteFavorite
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Breweries)

@@ -7,9 +7,9 @@ const db = require('../models')
  * /beers?city=atlanta
  * /beers?city=atlanta&style=ipa
  */
+
 const { Op } = require("sequelize");
 router.get('/beers', (req, res) => {
-  console.log(req.query)
   let query = [];
   if (req.query.style) {
     query.push({ style: req.query.style })
@@ -54,8 +54,8 @@ router.get('/beers', (req, res) => {
 //     })
 // });
 
-// /* GET beer by type. */
-// router.get('/beers/:style', (req, res) => {
+/* GET beer by type. */
+// router.get('/beer/:style', (req, res) => {
 //   db.Beers.findAll({
 //     where: {
 //       style: req.params.style

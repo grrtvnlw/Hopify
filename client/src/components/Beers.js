@@ -50,7 +50,7 @@ class Beers extends Component {
 
   // fetchData = (empty, e) => {
   //   let style = e.target.textContent
-  //   fetch(`/api/v1/beers/${style}`)
+  //   fetch(`/api/v1/beer/${style}`)
   //     .then(res => res.json())
   //     .then(data => {
   //       this.setState({
@@ -114,9 +114,8 @@ class Beers extends Component {
                     this.props.favorites.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
                       <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
                     :
-                      <Button className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
                     }
-                    {/* <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button>  */}
                     <Button variant="success" className={ styles.button }>Wishlist <span>🌳</span></Button> 
                   </div>
                   <div className={ styles.right }>
