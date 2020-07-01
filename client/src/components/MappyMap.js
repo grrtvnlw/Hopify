@@ -8,7 +8,7 @@ function Map(props) {
     <GoogleMap 
       defaultZoom={11}
       defaultCenter={{ lat: 33.76333225, lng: -84.3870607355802 }}
-      defaultOptions={{ styles: mapStyles }}
+      // defaultOptions={{ styles: mapStyles }}
     >
       {props.children}
     </GoogleMap>
@@ -39,10 +39,10 @@ export default function MappyMap(props) {
             onClick={() => {
               setSelectedBrewery(brewery)
             }}
-            icon={{
-              url: beerImg,
-              scaledSize: new window.google.maps.Size(25, 25)
-            }}
+            // icon={{
+            //   url: './hop.svg',
+            //   scaledSize: new window.google.maps.Size(25, 25)
+            // }}
           />
         )
       })}

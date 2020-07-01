@@ -5,6 +5,7 @@ import { Navbar, Nav, Button, Container, Card } from 'react-bootstrap'
 import styles from './Beers.module.css';
 
 class Favorites extends Component {
+  rconst 
   render() {
     return (
       <Container>
@@ -23,7 +24,7 @@ class Favorites extends Component {
           </Navbar>
           <div className={ styles.favDiv }>
             <h1>Favorite Beers and Breweries</h1>
-            {/* { this.state.beers.length !== null && this.state.beers.map((beer, index) => {
+            { this.props.favorites.map((beer, index) => {
               return (
                 <Card className={ styles.beerCard } key={index}>
                   <div className={ styles.wrapper }>
@@ -44,7 +45,7 @@ class Favorites extends Component {
                   </div>
                 </Card>
               )
-            })} */}
+            })}
           </div>
         </Container>
     )

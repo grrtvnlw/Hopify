@@ -110,13 +110,13 @@ class Beers extends Component {
                       <li><b>IBU: </b>{ beer.ibu }</li>
                       <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
                     </ul>
-                    {/* {
-                    this.props.favorites.findIndex((favorite) => this.props.favorite.name === favorite.name) === -1 ? 
+                    {
+                    this.props.favorites.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
                       <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
                     :
                       <Button className={styles.button} onClick={() => {this.props.deleteFavorite(beer)}}>Unfavorite <span>🍺</span></Button>
-                    } */}
-                    <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button> 
+                    }
+                    {/* <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavorite(beer)}}>Favorite <span>🍺</span></Button>  */}
                     <Button variant="success" className={ styles.button }>Wishlist <span>🌳</span></Button> 
                   </div>
                   <div className={ styles.right }>

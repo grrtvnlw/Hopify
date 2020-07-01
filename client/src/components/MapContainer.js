@@ -6,8 +6,8 @@ import beer from './beer.png'
 // import styles from './Breweries.module.css';
 
 const mapStyles = {
-  width: '880px',
-  height: '400px',
+  // width: '880px',
+  // height: '400px',
   // display: 'flex',
   // border: '1px solid red',
   // margin: '10px',
@@ -55,9 +55,9 @@ class MapContainer extends Component {
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
-          zoom={10}
+          zoom={6}
           // className={ styles.map }
-          style={mapStyles}
+          // style={mapStyles}
           initialCenter={{ lat: 33.76333225, lng: -84.3870607355802 }}
         >
           {this.state.stores.map((store, index) => {
@@ -66,7 +66,7 @@ class MapContainer extends Component {
                   lat:  store.latitude ? store.latitude : 33.76333225 ,
                   lng:  store.longitude ? store.longitude : -84.3870607355802 
                 }} name={store.name}
-                onClick={this.onMarkerClick} options={{ icon: beer }}/>
+                onClick={this.onMarkerClick} />
               )
             })}
           {this.state.stores.map((store, index) => {
