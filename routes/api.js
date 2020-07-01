@@ -38,21 +38,21 @@ router.get('/beers', (req, res) => {
 // });
 
 /* GET beers page. */
-// router.get('/beers', function(req, res, next) {
-//   db.Beers.findAll({
-//     include: [{
-//       model: db.Breweries,
-//       // attributes: ['name', 'description', 'website'],
-//       through: {
-//         attributes: []
-//       }
-//     }],
-//     // attributes: ['name', 'description', 'abv', 'ibu']
-//   })
-//     .then(data => {
-//       res.json(data)
-//     })
-// });
+router.get('/beers', function(req, res, next) {
+  db.Beers.findAll({
+    include: [{
+      model: db.Breweries,
+      // attributes: ['name', 'description', 'website'],
+      through: {
+        attributes: []
+      }
+    }],
+    // attributes: ['name', 'description', 'abv', 'ibu']
+  })
+    .then(data => {
+      res.json(data)
+    })
+});
 
 /* GET beer by type. */
 // router.get('/beer/:style', (req, res) => {

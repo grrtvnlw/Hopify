@@ -86,3 +86,31 @@ a img {
   padding: 10px;
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
+
+.specialDiv {
+  color: forestgreen;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+.specialButton {
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.specialButton:focus {
+  border: forestgreen;
+}
+
+.specialButton:visited {
+  border: forestgreen;
+}
+
+.specialButton:hover {
+  border: forestgreen;
+}
+
+.specialButton:active {
+  border: forestgreen;
+}

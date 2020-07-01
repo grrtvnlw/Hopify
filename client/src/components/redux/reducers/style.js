@@ -1,14 +1,11 @@
-import { ADD_STYLE, DELETE_STYLE } from '../action'
+import { ADD_STYLE } from '../action'
 
-const initialState = []
+const initialState = ''
 
 function styleReducer(state = initialState, action) {
   switch(action.type) {
     case ADD_STYLE:
-      return [...state, action.value];
-    case DELETE_STYLE:
-      let results = state.filter(style => style.name !== action.value.name)
-      return results;
+      return action.value;
     default:
       return state;
   }

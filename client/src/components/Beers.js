@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavoriteBeer, deleteFavoriteBeer, addWishlistBeer, deleteWishlistBeer, addCity, deleteCity, addStyle, deleteStyle } from './redux/action';
+import { addFavoriteBeer, deleteFavoriteBeer, addWishlistBeer, deleteWishlistBeer, addCity, addStyle, addBeers } from './redux/action';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Beers.module.css';
 
@@ -9,61 +9,73 @@ class Beers extends Component {
     super(props);
   
     this.state = {
+      // cityName: this.props.cityName,
+      // styleName: this.props.styleName
       cityName: '',
-      styleName: '',
-      beers: []
+      styleName: ''
     }
   }
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-    const { cityName: city, styleName: style } = this.state
-    fetch(`/api/v1/beers?city=${city}&style=${style}`)
-      .then(res => res.json())
-      .then(data => {
-          this.setState({
-            // cityName: '',
-            style: '',
-            beers: data
-          })
+  static getDerivedStateFromProps(props, state) {        
+    if (props.cityName !== state.cityName || props.styleName !== state.styleName) { 
+      let { cityName, styleName } = props
+      if (styleName === 'All Beer') {
+        fetch(`/api/v1/beers`)
+        .then(res => res.json())
+        .then(data => {
+          props.addBeers(data || [])
         })
+        return {
+          cityName,
+          styleName       
+        }  
+      } 
+      else {
+        fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
+        .then(res => res.json())
+          .then(data => {
+            props.addBeers(data || [])
+          })
+        return {
+          cityName,
+          styleName       
+        }        
+      }
+    } else {            
+      return state;        
+    }    
   }
-  
-  // handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   let city = this.state.cityName
-  //   fetch(`/api/v1/beer/${city}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //         this.setState({
-  //           cityName: '',
-  //           beers: data
-  //         })
-  //       })
-  // }
 
-  handleChange = (e) => {
-    this.setState({
-      cityName: e.target.value
+  handleFormSubmit = (e) => {
+      e.preventDefault();
+      const { cityName, styleName } = this.props
+      fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
+        .then(res => res.json())
+        .then(data => {
+            this.props.addBeers(data || [])
+            this.setState({
+              cityName: '',
+              style: ''
+          })
     })
   }
 
-  // fetchData = (empty, e) => {
-  //   let style = e.target.textContent
-  //   fetch(`/api/v1/beer/${style}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         beers: data
-  //       })
-  //     })
-  // }
+  componentDidMount() {
+    fetch(`/api/v1/beers`)
+      .then(res => res.json())
+      .then(data => {
+        this.props.addBeers(data || [])
+      })
+  }
+  
+  handleChange = (e) => {
+    let city = e.target.value
+    this.props.addCity(city)
+  }
 
   saveData = (empty, e) => {
     let style = e.target.textContent
-    this.setState({
-      styleName: style
-    }) 
+    this.props.addStyle(style)
   }
 
   render() {
@@ -76,6 +88,7 @@ class Beers extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/beers">Beers</Nav.Link>
+              {/* <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={() => this.props.addStyle}> */}
               <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.saveData}>
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
                 <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
@@ -85,22 +98,24 @@ class Beers extends Component {
                 <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
                 <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
-                <NavDropdown.Item value=''>All</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item value='All Beer'>All Beer</NavDropdown.Item>  
               </NavDropdown>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
               <Nav.Link href="/favorites">Favorites</Nav.Link>
               <Nav.Link href="/wishlist">Wishlist</Nav.Link>
             </Nav>
+            {/* <Form inline onSubmit={ this.props.addCity }> */}
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
-              <Button variant="outline-primary">Search</Button>
+              <Button type="submit" variant="outline-primary">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
         <div className={ styles.beerDiv }>
           <h1>Select a style and a city to find beers</h1>
-          <div>{ this.state.styleName && this.state.styleName + 's'}  { this.state.cityName && 'in ' + this.state.cityName }</div>
-          { this.state.beers.map((beer, index) => {
+          <div className={ styles.specialDiv}>{ this.props.styleName && this.props.styleName + 's'}  { this.props.cityName && 'in ' + this.props.cityName }</div>
+          { this.props.beers.map((beer, index) => {
             return (
               <Card className={ styles.beerCard } key={index}>
                 <div className={ styles.wrapper }>
@@ -143,7 +158,8 @@ const mapStateToProps = (state) => {
     favoriteBeers: state.favoriteBeers,
     wishlistBeers: state.wishlistBeers,
     cityName: state.cityName,
-    styleName: state.styleName
+    styleName: state.styleName,
+    beers: state.beers
   }
 }
 
@@ -153,9 +169,8 @@ const mapDispatchToProps = {
   addWishlistBeer,
   deleteWishlistBeer,
   addStyle,
-  deleteStyle,
   addCity,
-  deleteCity
+  addBeers
 }
 
 export default connect(
