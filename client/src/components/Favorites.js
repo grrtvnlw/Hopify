@@ -30,7 +30,7 @@ class Favorites extends Component {
                 <Card className={ styles.beerCard } key={index}>
                   <div className={ styles.wrapper }>
                     <div className={ styles.left }>
-                      <h2>{ beer.name }</h2> 
+                      <h3>{ beer.name }</h3> 
                       <p className={ styles.description }>{ beer.description }</p>
                       <ul>
                         <li><b>ABV: </b>{ beer.abv }</li>
@@ -54,12 +54,33 @@ class Favorites extends Component {
             })}
             <h2>Breweries</h2>
             { this.props.favoriteBreweries.map((brewery, index) => {
-              return (
-                <Card key={index}>
-                  <Card.Title>{brewery.name}</Card.Title>
-                </Card>
-              )
-            })}
+
+            const { name, brewery_type, street, city, state, phone, website_url } = brewery;
+
+            return (
+              <Card className={ styles.breweryCard } key={ index }>
+                <div className={ styles.wrapper }>
+                  <div>
+                    <Card.Title className={ styles.title }>
+                      { name && <h3>{ name }</h3> }
+                    </Card.Title>
+                    <Card.Text>
+                      { brewery_type && <p>Type: { brewery_type }</p> }
+                      { street && <p>Address: { street }, { city }, { state }</p> }
+                      { phone && <p>Phone: { phone }</p> }
+                      { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
+                    </Card.Text>
+                  {
+                    this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                    <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
+                    :
+                    <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                  }
+                  </div>
+                </div>
+              </Card>
+            )
+          })}
           </div>
         </Container>
     )

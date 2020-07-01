@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavoriteBrewery, deleteFavoriteBrewery } from './redux/action';
+import { addFavoriteBrewery, deleteFavoriteBrewery, addWishlistBrewery, deleteWishlistBrewery } from './redux/action';
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 import MapContainer from './MapContainer';
@@ -79,11 +79,17 @@ class Breweries extends Component {
                       { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
                     </Card.Text>
                   </div>
-                  {
+                    {
                     this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
                       <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
                     :
                       <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                    }
+                    {
+                    this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span>🌳</span></Button> 
+                    :
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span>🌳</span></Button>
                     }
                 </Card.Body>
               </Card>
@@ -97,13 +103,16 @@ class Breweries extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteBreweries: state.favoriteBreweries
+    favoriteBreweries: state.favoriteBreweries,
+    wishlistBreweries: state.wishlistBreweries
   }
 }
 
 const mapDispatchToProps = {
   addFavoriteBrewery,
-  deleteFavoriteBrewery
+  deleteFavoriteBrewery,
+  addWishlistBrewery,
+  deleteWishlistBrewery
 }
 
 export default connect(

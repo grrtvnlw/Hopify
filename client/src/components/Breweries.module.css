@@ -59,3 +59,8 @@
   padding: 10px;
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
+
+.button {
+  margin: 5px;
+  padding: 2px;
+}

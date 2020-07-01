@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavoriteBeer, deleteFavoriteBeer } from './redux/action';
+import { addFavoriteBeer, deleteFavoriteBeer, addWishlistBeer, deleteWishlistBeer } from './redux/action';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Beers.module.css';
 
@@ -116,7 +116,12 @@ class Beers extends Component {
                     :
                       <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
                     }
-                    <Button variant="success" className={ styles.button }>Wishlist <span>🌳</span></Button> 
+                    {
+                    this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span>🌳</span></Button> 
+                    :
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span>🌳</span></Button>
+                    }
                   </div>
                   <div className={ styles.right }>
                     <a href={ beer.link }><img src={ beer.image} /></a>
@@ -133,13 +138,16 @@ class Beers extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteBeers: state.favoriteBeers
+    favoriteBeers: state.favoriteBeers,
+    wishlistBeers: state.wishlistBeers
   }
 }
 
 const mapDispatchToProps = {
   addFavoriteBeer,
-  deleteFavoriteBeer
+  deleteFavoriteBeer,
+  addWishlistBeer,
+  deleteWishlistBeer
 }
 
 export default connect(
