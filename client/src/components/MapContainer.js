@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import Geocode from 'react-geocode';
+import beer from './beer.png'
 // import styles from './MapContainer.module.css';
 // import styles from './Breweries.module.css';
 
@@ -65,7 +66,7 @@ class MapContainer extends Component {
                   lat:  store.latitude ? store.latitude : 33.76333225 ,
                   lng:  store.longitude ? store.longitude : -84.3870607355802 
                 }} name={store.name}
-                onClick={this.onMarkerClick} />
+                onClick={this.onMarkerClick} options={{ icon: beer }}/>
               )
             })}
           {this.state.stores.map((store, index) => {

@@ -28,7 +28,7 @@
   color: forestgreen !important;
 }
 
-img {
+a img {
   height: 100%;
   width: 100%;
 }
@@ -49,6 +49,7 @@ img {
   width: 20%;
   height: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 .description {

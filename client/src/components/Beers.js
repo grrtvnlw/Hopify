@@ -78,12 +78,13 @@ class Beers extends Component {
               <Nav.Link href="/beers">Beers</Nav.Link>
               <NavDropdown title="Styles" id="basic-nav-dropdown" onSelect={this.saveData}>
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
-                <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
+                <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
+                <NavDropdown.Item value='Sour'>Sour</NavDropdown.Item>
                 <NavDropdown.Item value='Lager'>Lager</NavDropdown.Item>
                 <NavDropdown.Item value='Pilsner'>Pilsner</NavDropdown.Item>
-                <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
                 <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
                 <NavDropdown.Item value='Porter'>Porter</NavDropdown.Item>
+                <NavDropdown.Item value='Seltzer'>Seltzer</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/breweries">Breweries</Nav.Link>
               <Nav.Link href="/favorites">Favorites</Nav.Link>
