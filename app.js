@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var axios = require('axios');
 
 var apiRouter = require('./routes/api');
 
@@ -16,6 +17,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api/v1', apiRouter);
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next()
+})
+
+app.get('/random', (req, res) => {
+  axios.get('https://sandbox-api.brewerydb.com/v2/beer/random/?key=eafdb3badd96f50902820174d4b47ed4&params=established')
+    .then(response => {
+      res.json(response.data)
+    })
+    .catch(error => {
+      res.status(500).json({ type: 'error', message: error.message });
+    })
+})
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client/build/index.html'));

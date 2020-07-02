@@ -39,16 +39,6 @@ class Beers extends Component {
           cityName,
           styleName       
         } 
-      // if (styleName === 'All Beer' && cityName) {
-      //   fetch(`/api/v1/beers?city=${cityName}`)
-      //   .then(res => res.json())
-      //   .then(data => {
-      //     props.addBeers(data || [])
-      //   })
-      //   return {
-      //     cityName,
-      //     styleName       
-      //   }  
       } else {
         fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
         .then(res => res.json())

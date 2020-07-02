@@ -59,7 +59,11 @@ export default function MappyMap(props) {
         }}
         >
           <div>
-            <h2><a href={selectedBrewery.website_url} target="_blank">{selectedBrewery.name}</a></h2>
+            { selectedBrewery.website_url ? 
+              <h2><a href={selectedBrewery.website_url} target="_blank">{selectedBrewery.name}</a></h2>
+              :
+              <h2>{selectedBrewery.name}</h2>
+            }
             <div>
               { selectedBrewery.street && <p><b>Address:</b> {selectedBrewery.street}</p> }
               { selectedBrewery.phone && <p><b>Phone Number:</b> {selectedBrewery.phone}</p> }
