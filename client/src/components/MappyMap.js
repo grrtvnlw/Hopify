@@ -58,7 +58,7 @@ function Map(props) {
         >
           <div>
             {selectedBrewery.website_url ?
-              <h2><a href={selectedBrewery.website_url} target="_blank">{selectedBrewery.name}</a></h2>
+              <h2><a href={selectedBrewery.website_url} target="_blank" rel="noopener noreferrer">{selectedBrewery.name}</a></h2>
               :
               <h2>{selectedBrewery.name}</h2>
             }

@@ -71,24 +71,26 @@ class Breweries extends Component {
                       { brewery_type && <p>Type: { brewery_type }</p> }
                       { street && <p>Address: { street }, { city }, { state }</p> }
                       { phone && <p>Phone: { phone }</p> }
-                      { website_url && <p>Website: <a href={ website_url } target="_blank">{ website_url }</a></p> }
+                      { website_url && <p>Website: <a href={ website_url } target="_blank" rel="noopener noreferrer">{ website_url }</a></p> }
                     </Card.Text>
                   </div>
                     {
                     this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span>🍺</span></Button> 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span role="img" aria-label="beer">🍺</span></Button> 
                     :
-                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span>🍺</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span role="img" aria-label="beer">🍺</span></Button>
                     }
                     {
                     this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span>🌳</span></Button> 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span role="img" aria-label="hops">🌳</span></Button> 
                     :
-                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span>🌳</span></Button>
+                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span role="img" aria-label="hops">🌳</span></Button>
                     }
                 </Card.Body>
               </Card>
             )}
+            // Watchout for this line!
+            return ''
           })}
         </div>
       </Container>

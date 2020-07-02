@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
 export default function MyModal(props) {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
+  const setShow = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function MyModal(props) {
       >
         <Modal.Header>
           <Modal.Title>
-            <h1>Random Beer! Cheers <span>🍻</span></h1>
+            <h1>Random Beer! Cheers <span role="img" aria-label="cheers">🍻</span></h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
