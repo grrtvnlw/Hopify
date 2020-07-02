@@ -11,6 +11,7 @@ function Map(props) {
       defaultOptions={{ styles: mapStyles }}
     >
       {props.children}
+      {console.log(props)}
     </GoogleMap>
   );
 }

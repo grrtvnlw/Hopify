@@ -24,7 +24,7 @@ class Breweries extends Component {
       .then(data => {
           this.setState({
             breweries: data,
-            // cityName: ''
+            cityName: ''
           })
         })
   }
@@ -64,7 +64,7 @@ class Breweries extends Component {
           { this.state.breweries.map((brewery, index) => {
 
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
-
+            if (brewery_type !== 'planning') { 
             return (
               <Card className={ styles.breweryCard } key={ index }>
                 <Card.Body>
@@ -93,7 +93,7 @@ class Breweries extends Component {
                     }
                 </Card.Body>
               </Card>
-            )
+            )}
           })}
         </div>
       </Container>
