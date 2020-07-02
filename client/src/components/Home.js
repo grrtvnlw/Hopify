@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import styles from './Home.module.css';
 import pic from '../Hops_IPA_Pour-BA-1200.jpg';
-{/* <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet"></link> */}
 
 export default class Home extends Component {
   render() {
@@ -24,7 +23,7 @@ export default class Home extends Component {
         </Navbar>
         <div className={ styles.home }>
           <header>
-            <h1>H🌳pify</h1>
+            <h1>H<span role="img" aria-label="hop">🌳</span>pify</h1>
             <h3>Find beers and breweries in your city</h3>
           </header>
           <img src={ pic } alt="" className={ styles.banner }/>

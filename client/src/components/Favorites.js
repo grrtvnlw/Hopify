@@ -35,23 +35,23 @@ class Favorites extends Component {
                       <ul>
                         <li><b>ABV: </b>{ beer.abv }</li>
                         <li><b>IBU: </b>{ beer.ibu }</li>
-                        <li><b>Brewer: </b><a href={ beer.breweryLink } target="_blank">{ beer.brewery }</a></li>
+                        <li><b>Brewer: </b><a href={ beer.breweryLink } target="_blank" rel="noopener noreferrer">{ beer.brewery }</a></li>
                       </ul>
                       {
                         this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span>🍺</span></Button> 
+                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBeer(beer)}}>Favorite <span role="img" aria-label="beer">🍺</span></Button> 
                         :
-                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span>🍺</span></Button>
+                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBeer(beer)}}>Unfavorite <span role="img" aria-label="beer">🍺</span></Button>
                       }
                       {
                         this.props.wishlistBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
-                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span>🌳</span></Button> 
+                          <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBeer(beer)}}>Wishlist <span role="img" aria-label="hop">🌳</span></Button> 
                         :
-                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span>🌳</span></Button>
+                          <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBeer(beer)}}>Unwishlist <span role="img" aria-label="hop">🌳</span></Button>
                       }
                     </div>
                     <div className={ styles.right }>
-                      <a href={ beer.link } target="_blank"><img src={ beer.image} className={ styles.beerImage }/></a>
+                      <a href={ beer.link } target="_blank" rel="noopener noreferrer"><img src={ beer.image} className={ styles.beerImage } alt="" /></a>
                     </div>
                   </div>
                 </Card>
