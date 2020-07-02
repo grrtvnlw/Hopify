@@ -76,7 +76,7 @@ class Breweries extends Component {
                       { brewery_type && <p>Type: { brewery_type }</p> }
                       { street && <p>Address: { street }, { city }, { state }</p> }
                       { phone && <p>Phone: { phone }</p> }
-                      { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
+                      { website_url && <p>Website: <a href={ website_url } target="_blank">{ website_url }</a></p> }
                     </Card.Text>
                   </div>
                     {

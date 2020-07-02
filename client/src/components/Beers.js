@@ -157,7 +157,7 @@ class Beers extends Component {
                     <ul>
                       <li><b>ABV: </b>{ beer.abv }</li>
                       <li><b>IBU: </b>{ beer.ibu }</li>
-                      <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
+                      <li><b>Brewer: </b><a href={ beer.breweryLink } target="_blank">{ beer.brewery }</a></li>
                     </ul>
                     {
                     this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
@@ -173,7 +173,7 @@ class Beers extends Component {
                     }
                   </div>
                   <div className={ styles.right }>
-                    <a href={ beer.link }><img src={ beer.image} className={ styles.beerImage }/></a>
+                    <a href={ beer.link } target="_blank"><img src={ beer.image} className={ styles.beerImage }/></a>
                   </div>
                 </div>
               </Card>

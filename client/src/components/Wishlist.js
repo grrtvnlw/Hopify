@@ -35,7 +35,7 @@ class Wishlist extends Component {
                       <ul>
                         <li><b>ABV: </b>{ beer.abv }</li>
                         <li><b>IBU: </b>{ beer.ibu }</li>
-                        <li><b>Brewer: </b><a href={ beer.breweryLink }>{ beer.brewery }</a></li>
+                        <li><b>Brewer: </b><a href={ beer.breweryLink } target="_blank">{ beer.brewery }</a></li>
                       </ul>
                         {
                           this.props.favoriteBeers.findIndex((favorite) => beer.name === favorite.name) === -1 ? 
@@ -51,7 +51,7 @@ class Wishlist extends Component {
                         }
                     </div>
                     <div className={ styles.right }>
-                      <a href={ beer.link }><img src={ beer.image} className={ styles.beerImage } /></a>
+                      <a href={ beer.link } target="_blank"><img src={ beer.image} className={ styles.beerImage } /></a>
                     </div>
                   </div>
                 </Card>
@@ -73,7 +73,7 @@ class Wishlist extends Component {
                       { brewery_type && <p>Type: { brewery_type }</p> }
                       { street && <p>Address: { street }, { city }, { state }</p> }
                       { phone && <p>Phone: { phone }</p> }
-                      { website_url && <p>Website: <a href={ website_url }>{ website_url }</a></p> }
+                      { website_url && <p>Website: <a href={ website_url } target="_blank">{ website_url }</a></p> }
                     </Card.Text>
                   {
                     this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 

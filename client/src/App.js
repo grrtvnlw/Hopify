@@ -6,6 +6,7 @@ import Breweries from './components/Breweries';
 import Home from './components/Home';
 import Favorites from './components/Favorites';
 import Wishlist from './components/Wishlist';
+import Konami from './components/Konami';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/favorites" component={ Favorites } />
           <Route path="/wishlist" component={ Wishlist } />
         </Switch>
+        <Konami />
       </div>
     </Router>
   );
