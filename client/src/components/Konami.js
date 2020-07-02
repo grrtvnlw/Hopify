@@ -1,21 +1,32 @@
-import React from 'react';
-import Konami from 'react-konami-code';
-import MyModal from './MyModal';
+// import React from 'react';
+// import Konami from 'react-konami-code';
+// import MyModal from './MyModal';
 
-export default class App extends React.Component {
-  easterEgg = () => {
-    fetch('/random')
-    .then(res => res.json())
-      .then(data => {
-        console.log(data.data)
-        })
-    alert('Cheers! 🍻');
-  }
+// export default class Konami extends React.Component {
+//   constructor(props) {
+//     super(props)
+  
+//     this.state = {
+//       random: {}
+//     }
+//   }
+  
+//   easterEgg = () => {
+//     fetch('/random')
+//     .then(res => res.json())
+//       .then(response => {
+//         console.log(response.data)
+//         this.setState({
+//           random: response.data
+//         })
+//         })
+//     alert('Cheers! 🍻');
+//   }
 
-  render = () => (
-    <Konami action={this.easterEgg}>
-      {/* <MyModal /> */}
-      {"Hey, I'm an Easter Egg! Look at me!"}
-    </Konami>
-  )
-}
+//   render = () => (
+//     <Konami action={this.easterEgg}>
+//       <MyModal randomBeer={ this.state.random }/>
+//       {"Hey, I'm an Easter Egg! Look at me!"}
+//     </Konami>
+//   )
+// }
