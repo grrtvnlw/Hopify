@@ -23,6 +23,7 @@ app.use((req, res, next) => {
   next()
 })
 
+// Proxy router
 app.get('/random', (req, res) => {
   axios.get('https://sandbox-api.brewerydb.com/v2/beer/random/?key=eafdb3badd96f50902820174d4b47ed4&params=established')
     .then(response => {

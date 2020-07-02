@@ -6,7 +6,6 @@ export default function MyModal(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // props.randomBeer && setShow(true)
 
   return (
     <>
@@ -15,20 +14,22 @@ export default function MyModal(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        // style={ {visibility: props.visibility} }
       >
         <Modal.Header>
           <Modal.Title>
-            <h1>{props.randomBeer.name}</h1>
+            <h1>Random Beer! Cheers <span>🍻</span></h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* {props.randomBeer && <h2>{ props.randomBeer.style.description }</h2>} */}
+          <h1>{props.randomBeer.name}</h1>
+          {props.randomBeer && <h3>{ props.randomBeer.style.name }</h3>}
+          <div style={ {height: '100px', overflow: 'scroll', marginBottom: '20px' } }>
+            {props.randomBeer && <p>{ props.randomBeer.style.description }</p>}
+          </div>
           <ul>
-            <li>ABV: { props.randomBeer.abv}</li>
-            <li>IBU: { props.randomBeer.ibu }</li>
+            { props.randomBeer.abv && <li>ABV: { props.randomBeer.abv }</li> }
+            { props.randomBeer.ibu && <li>IBU: { props.randomBeer.ibu }</li> }
           </ul>
-          <p>Hi Wes!</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.closeModal}>

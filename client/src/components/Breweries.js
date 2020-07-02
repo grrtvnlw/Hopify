@@ -58,7 +58,6 @@ class Breweries extends Component {
           <h1>Search for a city to find breweries</h1>
           <MappyMap breweries={ this.state.breweries } />
           { this.state.breweries.map((brewery, index) => {
-
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
             if (brewery_type !== 'planning') { 
             return (

@@ -8,7 +8,6 @@ import Favorites from './components/Favorites';
 import Wishlist from './components/Wishlist';
 import Konami from 'react-konami-code';
 import MyModal from './components/MyModal';
-// import Konami from './components/Konami';
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +23,6 @@ export default class App extends Component {
     fetch('/random')
     .then(res => res.json())
       .then(response => {
-        console.log(response)
         this.setState({
           random: response.data,
           show: true
@@ -56,20 +54,4 @@ export default class App extends Component {
       </Router>
     )
   }
-  // return (
-  //   <Router>
-  //     <div>
-  //       <Switch>
-  //         <Route path="/" exact component={ Home } />
-  //         <Route path="/beers" component={ Beers } />
-  //         <Route path="/breweries" component={ Breweries } />
-  //         <Route path="/favorites" component={ Favorites } />
-  //         <Route path="/wishlist" component={ Wishlist } />
-  //       </Switch>
-  //       <Konami />
-  //     </div>
-  //   </Router>
-  // );
 }
-
-// export default App;
