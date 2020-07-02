@@ -9,6 +9,8 @@ export const DELETE_WISHLIST_BREWERY = 'DELETE_WISHLIST_BREWERY';
 export const ADD_STYLE = 'ADD_STYLE';
 export const ADD_CITY = 'ADD_CITY';
 export const ADD_BEERS = 'ADD_BEERS';
+export const ADD_BREWERIES = 'ADD_BREWERIES';
+export const ADD_MAPCITY = 'ADD_MAPCITY';
 
 export function addFavoriteBeer(value) {
   return {
@@ -83,6 +85,20 @@ export function addCity(value) {
 export function addBeers(value) {
   return {
     type: ADD_BEERS,
+    value
+  }
+}
+
+export function addBreweries(value) {
+  return {
+    type: ADD_BREWERIES,
+    value
+  }
+}
+
+export function addMapCity(value) {
+  return {
+    type: ADD_MAPCITY,
     value
   }
 }

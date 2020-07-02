@@ -6,6 +6,8 @@ import wishlistBeersReducer from './wishlistBeers';
 import cityReducer from './city';
 import styleReducer from './style';
 import beersReducer from './beers'
+import breweriesReducer from './breweries';
+import mapCityReducer from './mapCity'
 
 const rootReducer = combineReducers({
   favoriteBeers: favoriteBeersReducer,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
   wishlistBreweries: wishlistBreweriesReducer,
   cityName: cityReducer,
   styleName: styleReducer,
-  beers: beersReducer
+  beers: beersReducer,
+  breweries: breweriesReducer,
+  mapCity: mapCityReducer
 })
 
 export default rootReducer;

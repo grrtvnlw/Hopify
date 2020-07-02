@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addFavoriteBrewery, deleteFavoriteBrewery, addWishlistBrewery, deleteWishlistBrewery } from './redux/action';
+import { addFavoriteBrewery, deleteFavoriteBrewery, addWishlistBrewery, deleteWishlistBrewery, addBreweries, addMapCity } from './redux/action';
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
-import MapContainer from './MapContainer';
 import MappyMap from './MappyMap';
 
 class Breweries extends Component {
@@ -58,9 +57,6 @@ class Breweries extends Component {
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
           <MappyMap breweries={ this.state.breweries } />
-          {/* <div className={ styles.mapContainer }>  */}
-            {/* <MapContainer breweries={ this.state.breweries }/>  */}
-          {/* </div> */}
           { this.state.breweries.map((brewery, index) => {
 
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
@@ -104,7 +100,9 @@ class Breweries extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteBreweries: state.favoriteBreweries,
-    wishlistBreweries: state.wishlistBreweries
+    wishlistBreweries: state.wishlistBreweries,
+    breweries: state.breweries,
+    mapCity: state.mapCity
   }
 }
 
@@ -112,7 +110,9 @@ const mapDispatchToProps = {
   addFavoriteBrewery,
   deleteFavoriteBrewery,
   addWishlistBrewery,
-  deleteWishlistBrewery
+  deleteWishlistBrewery,
+  addBreweries,
+  addMapCity
 }
 
 export default connect(
