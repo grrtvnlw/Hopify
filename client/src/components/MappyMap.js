@@ -8,15 +8,17 @@ function Map(props) {
   const [selectedBrewery, setSelectedBrewery] = useState(null);
 
   useEffect(() => {
-    const bounds = new window.google.maps.LatLngBounds();
-    props.breweries.forEach(brewery => {
-      const { latitude, longitude } = brewery;
-      if (latitude && longitude) {
-        const latLng = new window.google.maps.LatLng(latitude, longitude);
-        bounds.extend(latLng);
-      }
-    });
-    map.current && map.current.fitBounds(bounds);
+    if (props.breweries.length) {
+      const bounds = new window.google.maps.LatLngBounds();
+      props.breweries.forEach(brewery => {
+        const { latitude, longitude } = brewery;
+        if (latitude && longitude) {
+          const latLng = new window.google.maps.LatLng(latitude, longitude);
+          bounds.extend(latLng);
+        }
+      });
+      map.current && map.current.fitBounds(bounds);
+    }
   })
 
   return (

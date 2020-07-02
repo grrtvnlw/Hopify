@@ -22,8 +22,8 @@ class Breweries extends Component {
       .then(res => res.json())
       .then(data => {
           this.setState({
-            breweries: data,
-            cityName: ''
+            cityName: '',
+            breweries: data
           })
         })
   }
