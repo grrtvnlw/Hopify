@@ -19,7 +19,17 @@ class Beers extends Component {
   static getDerivedStateFromProps(props, state) {        
     if (props.cityName !== state.cityName || props.styleName !== state.styleName) { 
       let { cityName, styleName } = props
-      if (styleName === 'All Beer') {
+      if (styleName === 'All Beer' && cityName) {
+        fetch(`/api/v1/beers?city=${cityName}`)
+        .then(res => res.json())
+        .then(data => {
+          props.addBeers(data || [])
+        })
+        return {
+          cityName,
+          styleName       
+        }
+      } else if (styleName === 'All Beer') {
         fetch(`/api/v1/beers`)
         .then(res => res.json())
         .then(data => {
@@ -28,7 +38,17 @@ class Beers extends Component {
         return {
           cityName,
           styleName       
-        }  
+        } 
+      // if (styleName === 'All Beer' && cityName) {
+      //   fetch(`/api/v1/beers?city=${cityName}`)
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     props.addBeers(data || [])
+      //   })
+      //   return {
+      //     cityName,
+      //     styleName       
+      //   }  
       } else {
         fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
         .then(res => res.json())
@@ -60,6 +80,7 @@ class Beers extends Component {
   }
 
   componentDidMount() {
+    this.props.addStyle('All Beer')
     fetch(`/api/v1/beers`)
       .then(res => res.json())
       .then(data => {
@@ -75,6 +96,20 @@ class Beers extends Component {
   saveData = (empty, e) => {
     let style = e.target.textContent
     this.props.addStyle(style)
+  }
+
+  clearField = (e) => {
+    e.preventDefault()
+    this.props.addCity('')
+    let style = this.props.style
+    fetch(`/api/v1/beers/${style}`)
+      .then(res => res.json())
+      .then(data => {
+        this.props.addBeers(data || [])
+        this.setState({
+          cityName: ''
+        })
+      })
   }
 
   render() {
@@ -105,7 +140,7 @@ class Beers extends Component {
             </Nav>
             <Form inline onSubmit={ this.handleFormSubmit }>
               <FormControl type="text" placeholder="Enter a city" className="mr-sm-2" value={ this.state.cityName } onChange={ this.handleChange } />
-              <Button type="submit" variant="outline-primary">Search</Button>
+              <Button type="submit" variant="outline-primary" onClick={ this.clearField }>Clear</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
