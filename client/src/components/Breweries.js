@@ -82,9 +82,9 @@ class Breweries extends Component {
                     }
                     {
                     this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                      <Button variant="success" type="button" size="sm" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span role="img" aria-label="hops">🌳</span></Button> 
+                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span role="img" aria-label="hops">🌳</span></Button> 
                     :
-                      <Button variant="outline-success" type="button" size="lg" className={ styles.button } onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span role="img" aria-label="hops">🌳</span></Button>
+                      <Button variant="outline-success" className={ styles.button } onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span role="img" aria-label="hops">🌳</span></Button>
                     }
                 </Card.Body>
               </Card>
