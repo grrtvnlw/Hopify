@@ -51,6 +51,8 @@
 }
 
 .right {
+  border: 1px solid red;
+  display: flex;
   width: 20%;
   height: 100%;
   align-items: center;
@@ -99,7 +101,7 @@
   border-radius: 5px;
 }
 
-.specialButton:focus {
+.specialButton:link {
   border: forestgreen;
 }
 
@@ -112,5 +114,9 @@
 }
 
 .specialButton:active {
+  border: forestgreen;
+}
+
+.specialButton:focus {
   border: forestgreen;
 }

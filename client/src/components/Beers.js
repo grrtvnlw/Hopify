@@ -74,6 +74,7 @@ class Beers extends Component {
     fetch(`/api/v1/beers`)
       .then(res => res.json())
       .then(data => {
+        console.log(`hello ${data}`)
         this.props.addBeers(data || [])
       })
   }
