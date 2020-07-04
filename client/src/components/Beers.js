@@ -71,7 +71,7 @@ class Beers extends Component {
 
   componentDidMount() {
     this.props.addStyle('All Beer')
-    fetch(`/api/v1/beers`)
+    fetch(`/beers`)
       .then(res => res.json())
       .then(data => {
         console.log(`hello ${data}`)
