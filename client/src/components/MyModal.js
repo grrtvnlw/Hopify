@@ -28,7 +28,7 @@ export default function MyModal(props) {
             {props.randomBeer && <p>{ props.randomBeer.style.description }</p>}
           </div>
           <ul>
-            { props.randomBeer.abv && <li>ABV: { props.randomBeer.abv }</li> }
+            { props.randomBeer.abv && <li>ABV: { props.randomBeer.abv }%</li> }
             { props.randomBeer.ibu && <li>IBU: { props.randomBeer.ibu }</li> }
           </ul>
         </Modal.Body>
