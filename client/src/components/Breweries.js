@@ -78,13 +78,13 @@ class Breweries extends Component {
                     this.props.favoriteBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
                       <Button variant="success" className={ styles.button } onClick={() => {this.props.addFavoriteBrewery(brewery)}}>Favorite <span role="img" aria-label="beer">🍺</span></Button> 
                     :
-                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span role="img" aria-label="beer">🍺</span></Button>
+                      <Button variant="outline-success" className={ styles.button } onClick={() => {this.props.deleteFavoriteBrewery(brewery)}}>Unfavorite <span role="img" aria-label="beer">🍺</span></Button>
                     }
                     {
                     this.props.wishlistBreweries.findIndex((favorite) => name === favorite.name) === -1 ? 
-                      <Button variant="success" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span role="img" aria-label="hops">🌳</span></Button> 
+                      <Button variant="success" type="button" size="sm" className={ styles.button } onClick={() => {this.props.addWishlistBrewery(brewery)}}>Wishlist <span role="img" aria-label="hops">🌳</span></Button> 
                     :
-                      <Button variant="outline-success" className={styles.button} onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span role="img" aria-label="hops">🌳</span></Button>
+                      <Button variant="outline-success" type="button" size="lg" className={ styles.button } onClick={() => {this.props.deleteWishlistBrewery(brewery)}}>Unwishlist <span role="img" aria-label="hops">🌳</span></Button>
                     }
                 </Card.Body>
               </Card>
