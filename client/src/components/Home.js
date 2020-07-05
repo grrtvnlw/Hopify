@@ -23,7 +23,7 @@ export default class Home extends Component {
         </Navbar>
         <div className={ styles.home }>
           <header>
-            <h1>H<span role="img" aria-label="hop">🌳</span>pify</h1>
+            <h1>H<span role="img" aria-label="hop">🌳</span>pify test</h1>
             <h3>Find beers and breweries in your city</h3>
           </header>
           <img src={ pic } alt="" className={ styles.banner }/>
