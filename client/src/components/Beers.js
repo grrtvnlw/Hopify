@@ -9,8 +9,6 @@ class Beers extends Component {
     super(props);
   
     this.state = {
-      // cityName: this.props.cityName,
-      // styleName: this.props.styleName
       cityName: '',
       styleName: ''
     }
