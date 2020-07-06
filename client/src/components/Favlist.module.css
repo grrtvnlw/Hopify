@@ -25,3 +25,9 @@
   padding: 10px;
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
+
+.button {
+  display:inline-block;
+  margin: 5px;
+  padding: 10px;
+}
