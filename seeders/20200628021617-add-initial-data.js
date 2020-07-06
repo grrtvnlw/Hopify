@@ -374,7 +374,7 @@ module.exports = {
       favorite: false,
       createdAt: new Date(),
       updatedAt: new Date() 
-    },  
+    } 
   ], {});
 
   return await queryInterface.bulkInsert('BeersBreweries', [
