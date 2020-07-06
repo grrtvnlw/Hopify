@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "mdelgvoahdnykx",
-    "password": "d1am7qo8qhlo8k",
-    "database": "hopifyme",
-    "host": "ec2-50-19-26-235.compute-1.amazonaws.com",
+    "username": "postgres",
+    "password": null,
+    "database": "hopify",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
