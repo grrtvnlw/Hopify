@@ -8,8 +8,13 @@ Use Hopify to find beers and breweries in your city!
 
 ## List of the APIs Used:
 
-OpenBreweryDB
-BreweryDB
+-OpenBreweryDB
+-BreweryDB
+
+## Technologies Used
+
+-React
+-Redux
 
 ## What Features You Would Add Next?
 
