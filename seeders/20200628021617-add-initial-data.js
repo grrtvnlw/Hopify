@@ -424,7 +424,7 @@ module.exports = {
       updatedAt: new Date() 
     },
     {
-      name: 'Pineapple Farm',    
+      name: 'Pineapple Farm Hazy IPA',    
       description: 'One thing is clear, this hazy IPA stands out from the crowd.  Brewed with a blend of New World hops and fresh pineapple for a tropical twist, Pineapple Farm is a juicy, island vacations in a can.',    
       link: 'https://coronadobrewing.com/coronado-beer-series/core-series-2/',
       image: 'https://coronadobrewing.com/assets/Pineapple-Farms-16_Front_2-copy.png',
