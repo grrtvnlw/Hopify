@@ -17,6 +17,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "pg": "^8.2.1",
-    "sequelize": "^5.22.2"
+    "sequelize": "^5.22.2",
+    "sequelize-cli": "^6.2.0"
   }
 }
