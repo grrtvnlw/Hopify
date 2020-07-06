@@ -358,6 +358,22 @@ module.exports = {
       favorite: false,
       createdAt: new Date(),
       updatedAt: new Date() 
+    }, 
+    {
+      name: 'Drafty Kilt',    
+      description: 'A roasty scotch ale with a hint of smoke. Full-bodied, but not overpowering. Smokey, but not in a creepy bar kind of way. Sweet, but not obnoxiously so. Sound like your ideal mother-in-law? Fair enough, but it also is a pretty dead-on description of our Scotch Ale. In a difficult hop-growing climate, Scottish brewers relied on other ingredients to impart flavor and bitterness – one such ingredient was smoked malt. Drafty Kilt is a dark, malty bombshell of a beer.',    
+      link: 'https://mondaynightbrewing.com/beers/drafty-kilt/',
+      image: 'https://i1.wp.com/mondaynightbrewing.com/wp-content/uploads/2017/09/kilt-for-website-01-01-01-01.png?resize=1632%2C1632&ssl=1',
+      brewery: 'Monday Night Brewing',
+      breweryLink: 'https://mondaynightbrewing.com/',
+      city: 'Atlanta',
+      abv: '7.2%',    
+      ibu: '26',    
+      style: 'Ale',    
+      wishlist: false,
+      favorite: false,
+      createdAt: new Date(),
+      updatedAt: new Date() 
     },  
   ], {});
 

@@ -115,6 +115,7 @@ class Beers extends Component {
                 <NavDropdown.Item value='IPA'>IPA</NavDropdown.Item>
                 <NavDropdown.Item value='Wheat'>Wheat</NavDropdown.Item>
                 <NavDropdown.Item value='Sour'>Sour</NavDropdown.Item>
+                <NavDropdown.Item value='Ale'>Ale</NavDropdown.Item>
                 <NavDropdown.Item value='Lager'>Lager</NavDropdown.Item>
                 <NavDropdown.Item value='Pilsner'>Pilsner</NavDropdown.Item>
                 <NavDropdown.Item value='Stout'>Stout</NavDropdown.Item>
