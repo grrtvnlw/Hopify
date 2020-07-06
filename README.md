@@ -1,4 +1,4 @@
-# Hopify ([https://github.com/grrtvnlw/Elegant-Panda])
+# [Hopify] (https://github.com/grrtvnlw/Elegant-Panda)
 
 ![Home Page](images/screenshot.png)
 
