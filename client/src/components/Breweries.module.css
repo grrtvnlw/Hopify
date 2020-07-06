@@ -57,6 +57,7 @@
 }
 
 .button {
+  display:inline-block;
   margin: 5px;
-  padding: 2px;
+  padding: 4px;
 }
