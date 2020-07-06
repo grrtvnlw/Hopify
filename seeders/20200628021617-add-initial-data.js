@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Breweries', [
+    return await queryInterface.bulkInsert('Breweries', [
       {
       name: 'SweetWater Brewing Company',
       description: "February 17, 1997 marked the official beginning of SweetWater Brewery, and a new style of brewing and selling beer in Atlanta as the boys wandered around Atlanta in an old van with Freddy's dog Badger. After ending up on the wrong side of the tracks a few times, they were finally pointed in the direction of Virginia-Highlands and found a few bars willing to take a chance on them. \"We'll give you a shot as long as your dog stops begging for leftovers on our patio\" was the cautious approval they needed to get the brand rolling.\r\n\r\nSweetWater's second and current location is in Midtown Atlanta, adjacent to Ansley Park, in the Armour Circle Industrial Park just off of Piedmont and Monroe. The boys saved all of their pennies to buy the 25,000 square feet of brewing goodness and smack in the middle of all the action. Since the company began we've wanted to be closer to our homes, the bars and stores that sell our beer, and all the good folks that drink it. Fortunately seven years of great growth gave the company that opportunity. We learned a lot from that location and left all those mistakes behind as we built our new home. SweetWater Brewing Company has been here since 2004 and it feels good to be settled in. Our new home has enough capacity to brew 100,000 barrels of beer a year (A few more years at this rate.)",
@@ -473,20 +473,20 @@ module.exports = {
     }
   ], {});
 
-  return await queryInterface.bulkInsert('BeersBreweries', [
-    //   {
-    //   beersId: 1,
-    //   breweriesId: 1,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()    
-    // },
-    // {
-    //   beersId: 2,
-    //   breweriesId: 1,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()    
-    // }
-  ])
+  // return await queryInterface.bulkInsert('BeersBreweries', [
+  //   //   {
+  //   //   beersId: 1,
+  //   //   breweriesId: 1,
+  //   //   createdAt: new Date(),
+  //   //   updatedAt: new Date()    
+  //   // },
+  //   // {
+  //   //   beersId: 2,
+  //   //   breweriesId: 1,
+  //   //   createdAt: new Date(),
+  //   //   updatedAt: new Date()    
+  //   // }
+  // ])
   },
 
   down: async (queryInterface, Sequelize) => {
