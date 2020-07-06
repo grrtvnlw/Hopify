@@ -216,7 +216,7 @@ module.exports = {
       updatedAt: new Date() 
     },
     {
-      name: 'All You Get us All You Get',    
+      name: 'All You Get is All You Get',    
       description: 'We can be swayed by the illusion that some things are just out of our grasp, but sometimes all you get is all you get. It’s worth realizing how fortunate you still are, and what you have here will not disappoint. Tart, fruity, and a touch sweet, this hazy sour ale is all you really need.',    
       link: 'https://www.orpheusbrewing.com/beers/all-you-get-is-all-you-get-2/',
       image: 'https://www.orpheusbrewing.com/wp-content/uploads/2020/01/All-You-Get-e1579121677400.png',
