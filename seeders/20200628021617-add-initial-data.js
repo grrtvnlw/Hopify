@@ -171,7 +171,7 @@ module.exports = {
       name: 'Hopsecutioner',    
       description: 'Light copper in color, this IPA has an aroma of fresh pine and citrus. A strong malt backbone provides balance to an assertive hop bitterness.',    
       link: 'https://www.terrapinbeer.com/beer/hopsecutioner',
-      image: 'https://www.sweetwaterbrew.com/wp-content/uploads/Blue-vignette.png',
+      image: 'https://www.terrapinbeer.com/beer/hopsecutioner',
       brewery: 'Terrapin Beer Company',
       breweryLink: 'https://www.terrapinbeer.com/',
       city: 'Athens',
