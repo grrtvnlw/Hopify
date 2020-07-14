@@ -10,7 +10,7 @@ Use Hopify to find beers and breweries in your city!
 
 1. OpenBreweryDB
 2. BreweryDB
-3 .Google Maps
+3. Google Maps
 
 ## Technologies Used
 
