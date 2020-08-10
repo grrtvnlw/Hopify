@@ -30,7 +30,4 @@ Another challenge was integrating the Google Maps componenent into my app, which
 
 ## Next Steps
 
-...
-
-
-
+The primary next step for this project is to add more data to the beer database. My goal is to automate this work as much as possible, which will include writing a web scraper (currently in progress, written in Python and Beautiful Soup), build a Chrome extension which can send data to the web scraper regarding the structure and labeling of HTML elements for a specific URL, and finally writing batch scripts to automate the importing of this data from the JSON files into my database. The more robust the beer database is, the more useful the app will be. 
