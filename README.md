@@ -20,6 +20,7 @@ Use Hopify to find beers and breweries in your city!
 4. Express.js
 5. PostgreSQL
 6. React-Google-Maps
+7. React-Konami-Code
 
 ## What Features You Would Add Next?
 
