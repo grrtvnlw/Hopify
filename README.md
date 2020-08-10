@@ -16,7 +16,10 @@ Use Hopify to find beers and breweries in your city!
 
 1. React
 2. Redux
-3. React-Google-Maps
+3. Node.js
+4. Express.js
+5. PostgreSQL
+6. React-Google-Maps
 
 ## What Features You Would Add Next?
 
