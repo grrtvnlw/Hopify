@@ -706,22 +706,23 @@ class Beers extends Component {
     e.preventDefault();
     this.props.addCity("");
     let style = this.props.style;
-    try {
-      fetch(`/api/v1/beers/${style}`)
-        .then((res) => res.json())
-        .then((data) => {
-          this.props.addBeers(data || []);
-          this.setState({
-            cityName: "",
-          });
-        });
-    } catch (error) {
-      console.log(error);
-      this.props.addBeers(emergencyBeers);
-      this.setState({
-        cityName: "",
-      });
-    }
+    // try {
+    //   fetch(`/api/v1/beers/${style}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       this.props.addBeers(data || []);
+    //       this.setState({
+    //         cityName: "",
+    //       });
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    let beers = emergencyBeers.filter((x) => x.style === style);
+    this.props.addBeers(beers);
+    this.setState({
+      cityName: "",
+    });
+    // }
   };
 
   render() {
