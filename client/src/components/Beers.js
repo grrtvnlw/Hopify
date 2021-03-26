@@ -59,8 +59,13 @@ class Beers extends Component {
             Accept: "application/json",
           },
         })
-          .then((res) => res.json())
+          .then((res) => {
+            console.log({ res });
+            res.json();
+            console.log("json", res.json());
+          })
           .then((data) => {
+            console.log(data);
             props.addBeers(data || []);
           });
         return {
@@ -104,7 +109,12 @@ class Beers extends Component {
 
   componentDidMount() {
     this.props.addStyle("All Beer");
-    fetch(`/api/v1/beers`)
+    fetch(`/api/v1/beers`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(`hello ${data}`);
