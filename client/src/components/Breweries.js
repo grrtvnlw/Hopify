@@ -4,6 +4,7 @@ import { addFavoriteBrewery, deleteFavoriteBrewery, addWishlistBrewery, deleteWi
 import { Navbar, Nav, Form, FormControl, Button, Container, Card } from 'react-bootstrap'
 import styles from './Breweries.module.css';
 import MappyMap from './MappyMap';
+import MapContainer from './MapContainer'
 
 class Breweries extends Component {
   constructor(props) {
@@ -56,8 +57,11 @@ class Breweries extends Component {
         </Navbar>
         <div className={ styles.breweryDiv }>
           <h1>Search for a city to find breweries</h1>
-          <MappyMap breweries={ this.state.breweries } />
-          { this.state.breweries.map((brewery, index) => {
+          {/* <MappyMap breweries={ this.state.breweries } /> */}
+          <div styles={{ height: '400px', width: '400px', marginBottom: '500px' }}>
+            <MapContainer breweries={ this.state.breweries } />
+          </div>
+          {/* { this.state.breweries.map((brewery, index) => {
             const { name, brewery_type, street, city, state, phone, website_url } = brewery;
             if (brewery_type !== 'planning') { 
             return (
@@ -91,7 +95,7 @@ class Breweries extends Component {
             )}
             // Watchout for this line!
             return ''
-          })}
+          })} */}
         </div>
       </Container>
     )
