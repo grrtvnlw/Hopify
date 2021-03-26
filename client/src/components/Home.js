@@ -35,7 +35,7 @@ export default class Home extends Component {
               <span role="img" aria-label="hop">
                 🌳
               </span>
-              pify test
+              pify
             </h1>
             <h3>Find beers and breweries in your city</h3>
           </header>

@@ -717,7 +717,8 @@ class Beers extends Component {
     //     });
     // } catch (error) {
     //   console.log(error);
-    this.props.addBeers(emergencyBeers);
+    let beers = emergencyBeers.filter((x) => x.style === style);
+    this.props.addBeers(beers);
     this.setState({
       cityName: "",
     });
@@ -787,6 +788,7 @@ class Beers extends Component {
             {this.props.cityName && "in " + this.props.cityName}
           </div>
           {this.props.beers.map((beer, index) => {
+            console.log(beer);
             return (
               <Card className={styles.beerCard} key={index}>
                 <div className={styles.wrapper}>
