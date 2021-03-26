@@ -563,74 +563,74 @@ class Beers extends Component {
     ) {
       let { cityName, styleName } = props;
       if (styleName === "All Beer" && cityName) {
-        try {
-          fetch(`/api/v1/beers?city=${cityName}`, {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          })``
-            .then((res) => res.json())
-            .then((data) => {
-              props.addBeers(
-                data || emergencyBeers.filter((x) => x.city === cityName)
-              );
-            });
-        } catch (error) {
-          console.log(error);
-          let city = emergencyBeers.filter((x) => x.city === cityName);
-          props.addBeers(city);
-        }
+        // try {
+        //   fetch(`/api/v1/beers?city=${cityName}`, {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Accept: "application/json",
+        //     },
+        //   })``
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //       props.addBeers(
+        //         data || emergencyBeers.filter((x) => x.city === cityName)
+        //       );
+        //     });
+        // } catch (error) {
+        //   console.log(error);
+        let city = emergencyBeers.filter((x) => x.city === cityName);
+        props.addBeers(city);
+        // }
         return {
           cityName,
           styleName,
         };
       } else if (styleName === "All Beer") {
-        try {
-          fetch(`/api/v1/beers`, {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          })
-            .then((res) => {
-              res.json();
-            })
-            .then((data) => {
-              props.addBeers(data || emergencyBeers);
-            });
-        } catch (error) {
-          console.log(error);
-          props.addCity(emergencyBeers);
-        }
+        // try {
+        //   fetch(`/api/v1/beers`, {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Accept: "application/json",
+        //     },
+        //   })
+        //     .then((res) => {
+        //       res.json();
+        //     })
+        //     .then((data) => {
+        //       props.addBeers(data || emergencyBeers);
+        //     });
+        // } catch (error) {
+        //   console.log(error);
+        props.addCity(emergencyBeers);
+        // }
         return {
           cityName,
           styleName,
         };
       } else {
-        try {
-          fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`, {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              props.addBeers(
-                data ||
-                  emergencyBeers.filter(
-                    (x) => x.city === cityName && x.style === styleName
-                  )
-              );
-            });
-        } catch (error) {
-          console.log(error);
-          let cityAndStyle = emergencyBeers.filter(
-            (x) => x.city === cityName && x.style === styleName
-          );
-          props.addBeers(cityAndStyle);
-        }
+        // try {
+        //   fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`, {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Accept: "application/json",
+        //     },
+        //   })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //       props.addBeers(
+        //         data ||
+        //           emergencyBeers.filter(
+        //             (x) => x.city === cityName && x.style === styleName
+        //           )
+        //       );
+        //     });
+        // } catch (error) {
+        //   console.log(error);
+        let cityAndStyle = emergencyBeers.filter(
+          (x) => x.city === cityName && x.style === styleName
+        );
+        props.addBeers(cityAndStyle);
+        // }
         return {
           cityName,
           styleName,
@@ -644,52 +644,52 @@ class Beers extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { cityName, styleName } = this.props;
-    try {
-      fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
-        .then((res) => res.json())
-        .then((data) => {
-          this.props.addBeers(
-            data ||
-              emergencyBeers.filter(
-                (x) => x.city === cityName && x.style === styleName
-              )
-          );
-          this.setState({
-            cityName: "",
-            style: "",
-          });
-        });
-    } catch (error) {
-      console.log(error);
-      let cityAndStyle = emergencyBeers.filter(
-        (x) => x.city === cityName && x.style === styleName
-      );
-      this.props.addBeers(cityAndStyle);
-      this.setState({
-        cityName: "",
-        style: "",
-      });
-    }
+    // try {
+    //   fetch(`/api/v1/beers?city=${cityName}&style=${styleName}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       this.props.addBeers(
+    //         data ||
+    //           emergencyBeers.filter(
+    //             (x) => x.city === cityName && x.style === styleName
+    //           )
+    //       );
+    //       this.setState({
+    //         cityName: "",
+    //         style: "",
+    //       });
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    let cityAndStyle = emergencyBeers.filter(
+      (x) => x.city === cityName && x.style === styleName
+    );
+    this.props.addBeers(cityAndStyle);
+    this.setState({
+      cityName: "",
+      style: "",
+    });
+    // }
   };
 
   componentDidMount() {
     this.props.addStyle("All Beer");
-    try {
-      fetch(`/api/v1/beers`, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(`hello ${data}`);
-          this.props.addBeers(data || emergencyBeers);
-        });
-    } catch (error) {
-      console.log(error);
-      this.props.addBeers(emergencyBeers);
-    }
+    // try {
+    //   fetch(`/api/v1/beers`, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(`hello ${data}`);
+    //       this.props.addBeers(data || emergencyBeers);
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    this.props.addBeers(emergencyBeers);
+    // }
   }
 
   handleChange = (e) => {
@@ -706,22 +706,22 @@ class Beers extends Component {
     e.preventDefault();
     this.props.addCity("");
     let style = this.props.style;
-    try {
-      fetch(`/api/v1/beers/${style}`)
-        .then((res) => res.json())
-        .then((data) => {
-          this.props.addBeers(data || []);
-          this.setState({
-            cityName: "",
-          });
-        });
-    } catch (error) {
-      console.log(error);
-      this.props.addBeers(emergencyBeers);
-      this.setState({
-        cityName: "",
-      });
-    }
+    // try {
+    //   fetch(`/api/v1/beers/${style}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       this.props.addBeers(data || []);
+    //       this.setState({
+    //         cityName: "",
+    //       });
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    this.props.addBeers(emergencyBeers);
+    this.setState({
+      cityName: "",
+    });
+    // }
   };
 
   render() {
