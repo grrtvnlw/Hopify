@@ -788,7 +788,6 @@ class Beers extends Component {
             {this.props.cityName && "in " + this.props.cityName}
           </div>
           {this.props.beers.map((beer, index) => {
-            console.log(beer);
             return (
               <Card className={styles.beerCard} key={index}>
                 <div className={styles.wrapper}>
