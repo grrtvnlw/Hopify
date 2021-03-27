@@ -15,6 +15,7 @@ import {
   FormControl,
   Button,
   Container,
+  Card,
 } from "react-bootstrap";
 import styles from "./Breweries.module.css";
 import MappyMap from "./MappyMap";
@@ -86,6 +87,111 @@ class Breweries extends Component {
         <div className={styles.breweryDiv}>
           <h1>Search for a city to find breweries</h1>
           <MappyMap breweries={this.state.breweries} />
+          {this.state.breweries.map((brewery, index) => {
+            const {
+              name,
+              brewery_type,
+              street,
+              city,
+              state,
+              phone,
+              website_url,
+            } = brewery;
+            if (brewery_type !== "planning") {
+              return (
+                <Card className={styles.breweryCard} key={index}>
+                  <Card.Body>
+                    <div>
+                      <Card.Title className={styles.title}>
+                        {name && <h2>{name}</h2>}
+                      </Card.Title>
+                      <Card.Text>
+                        {brewery_type && <p>Type: {brewery_type}</p>}
+                        {street && (
+                          <p>
+                            Address: {street}, {city}, {state}
+                          </p>
+                        )}
+                        {phone && <p>Phone: {phone}</p>}
+                        {website_url && (
+                          <p>
+                            Website:{" "}
+                            <a
+                              href={website_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {website_url}
+                            </a>
+                          </p>
+                        )}
+                      </Card.Text>
+                    </div>
+                    {this.props.favoriteBreweries.findIndex(
+                      (favorite) => name === favorite.name
+                    ) === -1 ? (
+                      <Button
+                        variant="success"
+                        className={styles.button}
+                        onClick={() => {
+                          this.props.addFavoriteBrewery(brewery);
+                        }}
+                      >
+                        Favorite{" "}
+                        <span role="img" aria-label="beer">
+                          🍺
+                        </span>
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline-success"
+                        className={styles.button}
+                        onClick={() => {
+                          this.props.deleteFavoriteBrewery(brewery);
+                        }}
+                      >
+                        Unfavorite{" "}
+                        <span role="img" aria-label="beer">
+                          🍺
+                        </span>
+                      </Button>
+                    )}
+                    {this.props.wishlistBreweries.findIndex(
+                      (favorite) => name === favorite.name
+                    ) === -1 ? (
+                      <Button
+                        variant="success"
+                        className={styles.button}
+                        onClick={() => {
+                          this.props.addWishlistBrewery(brewery);
+                        }}
+                      >
+                        Wishlist{" "}
+                        <span role="img" aria-label="hops">
+                          🌳
+                        </span>
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline-success"
+                        className={styles.button}
+                        onClick={() => {
+                          this.props.deleteWishlistBrewery(brewery);
+                        }}
+                      >
+                        Unwishlist{" "}
+                        <span role="img" aria-label="hops">
+                          🌳
+                        </span>
+                      </Button>
+                    )}
+                  </Card.Body>
+                </Card>
+              );
+            }
+            // Watchout for this line!
+            return "";
+          })}
         </div>
       </Container>
     );
