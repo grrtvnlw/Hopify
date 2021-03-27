@@ -7,7 +7,7 @@ import {
   deleteWishlistBrewery,
   addBreweries,
   addMapCity,
-} from "./redux/action";
+} from "../../redux/action";
 import {
   Navbar,
   Nav,
@@ -18,7 +18,7 @@ import {
   Card,
 } from "react-bootstrap";
 import styles from "./Breweries.module.css";
-import MappyMap from "./MappyMap";
+import MappyMap from "../Map/MappyMap";
 
 class Breweries extends Component {
   constructor(props) {

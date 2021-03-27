@@ -16,8 +16,8 @@ import {
   deleteFavoriteBeer,
   addWishlistBeer,
   deleteWishlistBeer,
-} from "./redux/action";
-import beerData from "../data/beerData";
+} from "../../redux/action";
+import beerData from "../../data/beerData";
 
 import styles from "./Beers.module.css";
 
