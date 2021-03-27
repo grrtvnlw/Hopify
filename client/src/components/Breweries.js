@@ -77,7 +77,9 @@ class Breweries extends Component {
                 value={this.state.cityName}
                 onChange={this.handleChange}
               />
-              <Button variant="outline-primary">Search</Button>
+              <Button variant="outline-primary" onClick={this.handleFormSubmit}>
+                Search
+              </Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
