@@ -59,21 +59,12 @@ const Beers = () => {
     }
   }, [city, style]);
 
-  const handleChange = (e) => {
+  const selectCity = (e) => {
     let selectedCity = e.target.value;
-    let filteredBeers;
     setCity(selectedCity);
-    if (selectedCity && style) {
-      filteredBeers = beerData.filter(
-        (x) => x.city === city && x.style === style
-      );
-    } else {
-      filteredBeers = beerData.filter((x) => x.city === selectedCity);
-    }
-    setBeerList(filteredBeers);
   };
 
-  const handleSelect = (_, e) => {
+  const selectStyle = (_, e) => {
     let selectedStyle = e.target.textContent;
     setStyle(selectedStyle);
   };
@@ -99,7 +90,7 @@ const Beers = () => {
             <NavDropdown
               title="Styles"
               id="basic-nav-dropdown"
-              onSelect={handleSelect}
+              onSelect={selectStyle}
             >
               <NavDropdown.Item value="IPA">IPA</NavDropdown.Item>
               <NavDropdown.Item value="Wheat">Wheat</NavDropdown.Item>
@@ -123,7 +114,7 @@ const Beers = () => {
               placeholder="Enter a city"
               className="mr-sm-2"
               value={city}
-              onChange={handleChange}
+              onChange={selectCity}
             />
             <Button type="submit" variant="outline-primary" onClick={clearForm}>
               Clear
@@ -137,34 +128,44 @@ const Beers = () => {
           {style && style + "s"} {city && "in " + city}
         </div>
         {beerList.map((beer, index) => {
+          const {
+            name,
+            abv,
+            ibu,
+            breweryLink,
+            brewery,
+            image,
+            link,
+            description,
+          } = beer;
           return (
             <Card className={styles.beerCard} key={index}>
               <div className={styles.wrapper}>
                 <div className={styles.left}>
-                  <h2>{beer.name}</h2>
-                  <p className={styles.description}>{beer.description}</p>
+                  <h2>{name}</h2>
+                  <p className={styles.description}>{description}</p>
                   <ul>
                     <li>
                       <b>ABV: </b>
-                      {beer.abv}
+                      {abv}
                     </li>
                     <li>
                       <b>IBU: </b>
-                      {beer.ibu}
+                      {ibu}
                     </li>
                     <li>
                       <b>Brewer: </b>
                       <a
-                        href={beer.breweryLink}
+                        href={breweryLink}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {beer.brewery}
+                        {brewery}
                       </a>
                     </li>
                   </ul>
                   {favoriteBeers.findIndex(
-                    (favorite) => beer.name === favorite.name
+                    (favorite) => name === favorite.name
                   ) === -1 ? (
                     <Button
                       variant="success"
@@ -193,7 +194,7 @@ const Beers = () => {
                     </Button>
                   )}
                   {wishlistBeers.findIndex(
-                    (favorite) => beer.name === favorite.name
+                    (favorite) => name === favorite.name
                   ) === -1 ? (
                     <Button
                       variant="success"
@@ -223,8 +224,8 @@ const Beers = () => {
                   )}
                 </div>
                 <div className={styles.right}>
-                  <a href={beer.link} target="_blank" rel="noopener noreferrer">
-                    <img src={beer.image} className={styles.beerImage} alt="" />
+                  <a href={link} target="_blank" rel="noopener noreferrer">
+                    <img src={image} className={styles.beerImage} alt="" />
                   </a>
                 </div>
               </div>

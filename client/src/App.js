@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Konami from "react-konami-code";
 
@@ -9,54 +9,43 @@ import Favorites from "./components/Favorites/Favorites";
 import Wishlist from "./components/Wishlist/Wishlist";
 import MyModal from "./components/EasterEgg/MyModal";
 
-import "./App.css";
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [randomBeer, setRandomBeer] = useState("");
 
-    this.state = {
-      random: "",
-      show: false,
-    };
-  }
-
-  easterEgg = () => {
+  const easterEgg = () => {
     fetch("/random")
       .then((res) => res.json())
       .then((response) => {
-        this.setState({
-          random: response.data,
-          show: true,
-        });
+        setRandomBeer(response.data);
+        setShowModal(true);
       });
   };
 
-  closeModal = () => {
-    this.setState({
-      show: false,
-    });
+  const closeModal = () => {
+    setShowModal(false);
   };
 
-  render() {
-    return (
-      <Router>
-        <div>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/beers" component={Beers} />
-            <Route path="/breweries" component={Breweries} />
-            <Route path="/favorites" component={Favorites} />
-            <Route path="/wishlist" component={Wishlist} />
-          </Switch>
-          <Konami action={this.easterEgg}>
-            <MyModal
-              randomBeer={this.state.random}
-              show={this.state.show}
-              closeModal={this.closeModal}
-            />
-          </Konami>
-        </div>
-      </Router>
-    );
-  }
-}
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/beers" component={Beers} />
+          <Route path="/breweries" component={Breweries} />
+          <Route path="/favorites" component={Favorites} />
+          <Route path="/wishlist" component={Wishlist} />
+        </Switch>
+        <Konami action={easterEgg}>
+          <MyModal
+            randomBeer={randomBeer}
+            show={showModal}
+            closeModal={closeModal}
+          />
+        </Konami>
+      </div>
+    </Router>
+  );
+};
+
+export default App;

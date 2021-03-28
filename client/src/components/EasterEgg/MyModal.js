@@ -1,43 +1,45 @@
-import React, { useState } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
 
-export default function MyModal(props) {
-  // const [show, setShow] = useState(false);
-  const setShow = useState(false);
-
-  const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
+const MyModal = ({ show, randomBeer, closeModal }) => {
   return (
     <>
-      <Modal
-        show={props.show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
+      <Modal show={show} onHide={closeModal} backdrop="static" keyboard={false}>
         <Modal.Header>
           <Modal.Title>
-            <h1>Random Beer! Cheers <span role="img" aria-label="cheers">🍻</span></h1>
+            <h1>
+              Random Beer! Cheers{" "}
+              <span role="img" aria-label="cheers">
+                🍻
+              </span>
+            </h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h1>{props.randomBeer.name}</h1>
-          {props.randomBeer && <h3>{ props.randomBeer.style.name }</h3>}
-          <div style={ {height: '100px', overflow: 'scroll', marginBottom: '20px' } }>
-            {props.randomBeer && <p>{ props.randomBeer.style.description }</p>}
+          <h1>{randomBeer.name}</h1>
+          {randomBeer && <h3>{randomBeer.style.name}</h3>}
+          <div
+            style={{
+              height: "100px",
+              overflow: "scroll",
+              marginBottom: "20px",
+            }}
+          >
+            {randomBeer && <p>{randomBeer.style.description}</p>}
           </div>
           <ul>
-            { props.randomBeer.abv && <li>ABV: { props.randomBeer.abv }%</li> }
-            { props.randomBeer.ibu && <li>IBU: { props.randomBeer.ibu }</li> }
+            {randomBeer.abv && <li>ABV: {randomBeer.abv}%</li>}
+            {randomBeer.ibu && <li>IBU: {randomBeer.ibu}</li>}
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.closeModal}>
+          <Button variant="secondary" onClick={closeModal}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
     </>
-    );
-}
+  );
+};
+
+export default MyModal;
