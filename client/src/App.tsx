@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Konami from "react-konami-code";
 
@@ -9,9 +9,9 @@ import Favorites from "./components/Favorites/Favorites";
 import Wishlist from "./components/Wishlist/Wishlist";
 import MyModal from "./components/EasterEgg/MyModal";
 
-const App = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [randomBeer, setRandomBeer] = useState("");
+const App: FunctionComponent = (): JSX.Element => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [randomBeer, setRandomBeer] = useState<string>("");
 
   const easterEgg = () => {
     fetch("/random")
