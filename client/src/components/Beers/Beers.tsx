@@ -18,18 +18,19 @@ import {
   deleteWishlistBeer,
 } from "../../redux/action";
 import beerData from "../../data/beerData";
+import { RootState, BeerData } from "../index";
 
 import styles from "./Beers.module.css";
 
-const Beers = () => {
-  const [city, setCity] = useState("");
-  const [style, setStyle] = useState("All Beer");
-  const [beerList, setBeerList] = useState(beerData);
-  const favoriteBeers = useSelector((store) => {
-    return store.favoriteBeers;
+const Beers: React.FunctionComponent = (): JSX.Element => {
+  const [city, setCity] = useState<string>("");
+  const [style, setStyle] = useState<string | null>("All Beer");
+  const [beerList, setBeerList] = useState<Array<BeerData>>(beerData);
+  const favoriteBeers = useSelector((state: RootState) => {
+    return state.favoriteBeers;
   });
-  const wishlistBeers = useSelector((store) => {
-    return store.wishlistBeers;
+  const wishlistBeers = useSelector((state: RootState) => {
+    return state.wishlistBeers;
   });
   const dispatch = useDispatch();
 
@@ -59,17 +60,20 @@ const Beers = () => {
     }
   }, [city, style]);
 
-  const selectCity = (e) => {
+  const selectCity = (e: React.ChangeEvent<HTMLInputElement>) => {
     let selectedCity = e.target.value;
     setCity(selectedCity);
   };
 
-  const selectStyle = (_, e) => {
+  const selectStyle = (
+    _: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     let selectedStyle = e.target.textContent;
     setStyle(selectedStyle);
   };
 
-  const clearForm = (e) => {
+  const clearForm = (e: any) => {
     e.preventDefault();
     setBeerList(beerData);
     setCity("");
@@ -92,17 +96,17 @@ const Beers = () => {
               id="basic-nav-dropdown"
               onSelect={selectStyle}
             >
-              <NavDropdown.Item value="IPA">IPA</NavDropdown.Item>
-              <NavDropdown.Item value="Wheat">Wheat</NavDropdown.Item>
-              <NavDropdown.Item value="Sour">Sour</NavDropdown.Item>
-              <NavDropdown.Item value="Ale">Ale</NavDropdown.Item>
-              <NavDropdown.Item value="Lager">Lager</NavDropdown.Item>
-              <NavDropdown.Item value="Pilsner">Pilsner</NavDropdown.Item>
-              <NavDropdown.Item value="Stout">Stout</NavDropdown.Item>
-              <NavDropdown.Item value="Porter">Porter</NavDropdown.Item>
-              <NavDropdown.Item value="Seltzer">Seltzer</NavDropdown.Item>
+              <NavDropdown.Item eventKey="IPA">IPA</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Wheat">Wheat</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Sour">Sour</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Ale">Ale</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Lager">Lager</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Pilsner">Pilsner</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Stout">Stout</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Porter">Porter</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Seltzer">Seltzer</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item value="All Beer">All Beer</NavDropdown.Item>
+              <NavDropdown.Item eventKey="All Beer">All Beer</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/breweries">Breweries</Nav.Link>
             <Nav.Link href="/favorites">Favorites</Nav.Link>
@@ -164,22 +168,9 @@ const Beers = () => {
                       </a>
                     </li>
                   </ul>
-                  {favoriteBeers.findIndex(
-                    (favorite) => name === favorite.name
-                  ) === -1 ? (
-                    <Button
-                      variant="success"
-                      className={styles.button}
-                      onClick={() => {
-                        dispatch(addFavoriteBeer(beer));
-                      }}
-                    >
-                      Favorite{" "}
-                      <span role="img" aria-label="beer">
-                        🍺
-                      </span>
-                    </Button>
-                  ) : (
+                  {favoriteBeers.find(
+                    (favoriteBeer) => name === favoriteBeer.name
+                  ) ? (
                     <Button
                       variant="outline-success"
                       className={styles.button}
@@ -188,27 +179,27 @@ const Beers = () => {
                       }}
                     >
                       Unfavorite{" "}
-                      <span role="img" aria-label="beer">
+                      <span role="img" aria-label="hop">
                         🍺
                       </span>
                     </Button>
-                  )}
-                  {wishlistBeers.findIndex(
-                    (favorite) => name === favorite.name
-                  ) === -1 ? (
+                  ) : (
                     <Button
                       variant="success"
                       className={styles.button}
                       onClick={() => {
-                        dispatch(addWishlistBeer(beer));
+                        dispatch(addFavoriteBeer(beer));
                       }}
                     >
-                      Wishlist{" "}
+                      Favorite{" "}
                       <span role="img" aria-label="hop">
-                        🌳
+                        🍺
                       </span>
                     </Button>
-                  ) : (
+                  )}
+                  {wishlistBeers.find(
+                    (wishlistBeer) => name === wishlistBeer.name
+                  ) ? (
                     <Button
                       variant="outline-success"
                       className={styles.button}
@@ -217,6 +208,19 @@ const Beers = () => {
                       }}
                     >
                       Unwishlist{" "}
+                      <span role="img" aria-label="hop">
+                        🌳
+                      </span>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="success"
+                      className={styles.button}
+                      onClick={() => {
+                        dispatch(addWishlistBeer(beer));
+                      }}
+                    >
+                      Wishlist{" "}
                       <span role="img" aria-label="hop">
                         🌳
                       </span>

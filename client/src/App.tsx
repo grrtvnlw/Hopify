@@ -8,13 +8,14 @@ import Home from "./components/Homepage/Home";
 import Favorites from "./components/Favorites/Favorites";
 import Wishlist from "./components/Wishlist/Wishlist";
 import MyModal from "./components/EasterEgg/MyModal";
+import { RandomBeerData } from "./components";
 
-const App = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [randomBeer, setRandomBeer] = useState("");
+const App: React.FunctionComponent = (): JSX.Element => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [randomBeer, setRandomBeer] = useState<RandomBeerData | undefined>();
 
   const easterEgg = () => {
-    fetch("/random")
+    fetch("https://hopifyme.herokuapp.com/random")
       .then((res) => res.json())
       .then((response) => {
         setRandomBeer(response.data);

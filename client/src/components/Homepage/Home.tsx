@@ -6,7 +6,7 @@ import pic from "../../assets/Hops_IPA_Pour-BA-1200.jpg";
 import styles from "./Home.module.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const Home = () => {
+const Home: React.FunctionComponent = (): JSX.Element => {
   return (
     <Container>
       <Navbar bg="dark" variant="dark" expand="lg" className={styles.colorNav}>
