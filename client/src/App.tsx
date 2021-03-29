@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Konami from "react-konami-code";
 
@@ -8,13 +8,14 @@ import Home from "./components/Homepage/Home";
 import Favorites from "./components/Favorites/Favorites";
 import Wishlist from "./components/Wishlist/Wishlist";
 import MyModal from "./components/EasterEgg/MyModal";
+import { RandomBeerData } from "./components";
 
-const App: FunctionComponent = (): JSX.Element => {
+const App: React.FunctionComponent = (): JSX.Element => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [randomBeer, setRandomBeer] = useState<string>("");
+  const [randomBeer, setRandomBeer] = useState<RandomBeerData | undefined>();
 
   const easterEgg = () => {
-    fetch("/random")
+    fetch("https://hopifyme.herokuapp.com/random")
       .then((res) => res.json())
       .then((response) => {
         setRandomBeer(response.data);

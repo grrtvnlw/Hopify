@@ -1,7 +1,19 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const MyModal = ({ show, randomBeer, closeModal }) => {
+import { RandomBeerData } from "../index";
+
+interface IProps {
+  show: boolean;
+  randomBeer?: RandomBeerData | undefined;
+  closeModal: () => void;
+}
+
+const MyModal: React.FunctionComponent<IProps> = ({
+  show,
+  randomBeer,
+  closeModal,
+}): JSX.Element => {
   return (
     <>
       <Modal show={show} onHide={closeModal} backdrop="static" keyboard={false}>
@@ -16,8 +28,8 @@ const MyModal = ({ show, randomBeer, closeModal }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h1>{randomBeer.name}</h1>
-          {randomBeer && <h3>{randomBeer.style.name}</h3>}
+          <h1>{randomBeer?.name}</h1>
+          {randomBeer && <h3>{randomBeer?.style.name}</h3>}
           <div
             style={{
               height: "100px",
@@ -28,8 +40,8 @@ const MyModal = ({ show, randomBeer, closeModal }) => {
             {randomBeer && <p>{randomBeer.style.description}</p>}
           </div>
           <ul>
-            {randomBeer.abv && <li>ABV: {randomBeer.abv}%</li>}
-            {randomBeer.ibu && <li>IBU: {randomBeer.ibu}</li>}
+            {randomBeer?.abv && <li>ABV: {randomBeer?.abv}%</li>}
+            {randomBeer?.ibu && <li>IBU: {randomBeer?.ibu}</li>}
           </ul>
         </Modal.Body>
         <Modal.Footer>

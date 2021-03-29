@@ -17,21 +17,22 @@ import {
   deleteWishlistBrewery,
 } from "../../redux/action";
 import MappyMap from "../Map/MappyMap";
+import { BreweryData, RootState } from "../index";
 
 import styles from "./Breweries.module.css";
 
-const Breweries = () => {
-  const [city, setCity] = useState("");
-  const [breweries, setBreweries] = useState([]);
-  const favoriteBreweries = useSelector((store) => {
-    return store.favoriteBreweries;
+const Breweries: React.FunctionComponent = (): JSX.Element => {
+  const [city, setCity] = useState<string>("");
+  const [breweries, setBreweries] = useState<BreweryData[]>([]);
+  const favoriteBreweries = useSelector((state: RootState) => {
+    return state.favoriteBreweries;
   });
-  const wishlistBreweries = useSelector((store) => {
-    return store.wishlistBreweries;
+  const wishlistBreweries = useSelector((state: RootState) => {
+    return state.wishlistBreweries;
   });
   const dispatch = useDispatch();
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: any) => {
     e.preventDefault();
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${city}`)
       .then((res) => res.json())
@@ -41,7 +42,7 @@ const Breweries = () => {
       });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const cityName = e.target.value;
     setCity(cityName);
   };
@@ -78,7 +79,8 @@ const Breweries = () => {
       <div className={styles.breweryDiv}>
         <h1>Search for a city to find breweries</h1>
         <MappyMap breweries={breweries} />
-        {breweries.map((brewery, index) => {
+        {breweries.map((brewery: BreweryData, index: number) => {
+          console.log(brewery);
           const {
             name,
             brewery_type,
@@ -118,22 +120,9 @@ const Breweries = () => {
                       )}
                     </Card.Text>
                   </div>
-                  {favoriteBreweries.findIndex(
-                    (favorite) => name === favorite.name
-                  ) === -1 ? (
-                    <Button
-                      variant="success"
-                      className={styles.button}
-                      onClick={() => {
-                        dispatch(addFavoriteBrewery(brewery));
-                      }}
-                    >
-                      Favorite{" "}
-                      <span role="img" aria-label="beer">
-                        🍺
-                      </span>
-                    </Button>
-                  ) : (
+                  {favoriteBreweries.find(
+                    (favoriteBrewery) => name === favoriteBrewery.name
+                  ) ? (
                     <Button
                       variant="outline-success"
                       className={styles.button}
@@ -146,23 +135,23 @@ const Breweries = () => {
                         🍺
                       </span>
                     </Button>
-                  )}
-                  {wishlistBreweries.findIndex(
-                    (favorite) => name === favorite.name
-                  ) === -1 ? (
+                  ) : (
                     <Button
                       variant="success"
                       className={styles.button}
                       onClick={() => {
-                        dispatch(addWishlistBrewery(brewery));
+                        dispatch(addFavoriteBrewery(brewery));
                       }}
                     >
-                      Wishlist{" "}
-                      <span role="img" aria-label="hops">
-                        🌳
+                      Favorite{" "}
+                      <span role="img" aria-label="beer">
+                        🍺
                       </span>
                     </Button>
-                  ) : (
+                  )}
+                  {wishlistBreweries.find(
+                    (wishlistBrewery) => name === wishlistBrewery.name
+                  ) ? (
                     <Button
                       variant="outline-success"
                       className={styles.button}
@@ -171,6 +160,19 @@ const Breweries = () => {
                       }}
                     >
                       Unwishlist{" "}
+                      <span role="img" aria-label="hops">
+                        🌳
+                      </span>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="success"
+                      className={styles.button}
+                      onClick={() => {
+                        dispatch(addWishlistBrewery(brewery));
+                      }}
+                    >
+                      Wishlist{" "}
                       <span role="img" aria-label="hops">
                         🌳
                       </span>
