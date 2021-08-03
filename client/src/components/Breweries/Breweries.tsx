@@ -20,6 +20,7 @@ import MappyMap from "../Map/MappyMap";
 import { BreweryData, RootState } from "../index";
 
 import styles from "./Breweries.module.css";
+import Navigation from "../Navbar/Navbar";
 
 const Breweries: React.FunctionComponent = (): JSX.Element => {
   const [city, setCity] = useState<string>("");
@@ -49,33 +50,7 @@ const Breweries: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <Container>
-      <Navbar bg="dark" variant="dark" expand="lg" className={styles.colorNav}>
-        <Navbar.Brand href="/" className={styles.navBrand}>
-          Hopify
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/beers">Beers</Nav.Link>
-            <Nav.Link href="/breweries">Breweries</Nav.Link>
-            <Nav.Link href="/favorites">Favorites</Nav.Link>
-            <Nav.Link href="/wishlist">Wishlist</Nav.Link>
-          </Nav>
-          <Form inline onSubmit={handleFormSubmit}>
-            <FormControl
-              type="text"
-              placeholder="Enter a city"
-              className="mr-sm-2"
-              value={city}
-              onChange={handleChange}
-            />
-            <Button variant="outline-primary" onClick={handleFormSubmit}>
-              Search
-            </Button>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
+      <Navigation />
       <div className={styles.breweryDiv}>
         <h1>Search for a city to find breweries</h1>
         <MappyMap breweries={breweries} />

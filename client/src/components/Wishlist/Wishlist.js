@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Button, Container, Card } from "react-bootstrap";
+import { Button, Container, Card } from "react-bootstrap";
+
+import Navigation from "../Navbar/Navbar";
 
 import {
   addWishlistBeer,
@@ -31,21 +33,7 @@ const Wishlist = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Navbar bg="dark" variant="dark" expand="lg" className={styles.colorNav}>
-        <Navbar.Brand href="/" className={styles.navBrand}>
-          Hopify
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/beers">Beers</Nav.Link>
-            <Nav.Link href="/breweries">Breweries</Nav.Link>
-            <Nav.Link href="/favorites">Favorites</Nav.Link>
-            <Nav.Link href="/wishlist">Wishlist</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Navigation />
       <div className={styles.favDiv}>
         <h1>My Wishlist</h1>
         <h2>Beers</h2>

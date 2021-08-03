@@ -1,6 +1,7 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
+import Navigation from "../Navbar/Navbar";
 import pic from "../../assets/Hops_IPA_Pour-BA-1200.jpg";
 
 import styles from "./Home.module.css";
@@ -9,21 +10,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const Home: React.FunctionComponent = (): JSX.Element => {
   return (
     <Container>
-      <Navbar bg="dark" variant="dark" expand="lg" className={styles.colorNav}>
-        <Navbar.Brand href="/" className={styles.navBrand}>
-          Hopify
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/beers">Beers</Nav.Link>
-            <Nav.Link href="/breweries">Breweries</Nav.Link>
-            <Nav.Link href="/favorites">Favorites</Nav.Link>
-            <Nav.Link href="/wishlist">Wishlist</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Navigation />
       <div className={styles.home}>
         <header>
           <h1>

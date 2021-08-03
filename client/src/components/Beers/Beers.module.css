@@ -11,7 +11,7 @@
 .beerDiv h1 {
   color: forestgreen;
   padding: 10px;
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 .beerCard {
@@ -64,7 +64,7 @@
 }
 
 .button {
-  display:inline-block;
+  display: inline-block;
   margin: 5px;
   padding: 5px 10px;
 }
@@ -80,20 +80,20 @@
 .favDiv h1 {
   color: forestgreen;
   padding: 10px;
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 .favDiv h2 {
   color: forestgreen;
   padding: 10px;
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 .specialDiv {
   color: forestgreen;
   padding: 10px;
   font-size: 30px;
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 .specialButton {
@@ -119,4 +119,14 @@
 
 .specialButton:focus {
   border: forestgreen;
+}
+
+/* Input Container */
+
+.inputContainer {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: white;
 }
